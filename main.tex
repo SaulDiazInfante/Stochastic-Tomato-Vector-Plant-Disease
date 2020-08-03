@@ -2,12 +2,14 @@
 \usepackage[utf8]{inputenc}
 
 \title{Stochastic-Tomato-Vector-Plant-Disease}
-\author{Saúl Díaz Infante}
+\author{Gabriel Adrian Salcedo Varela  \and Saúl Díaz Infante }
 \date{July 2020}
 \usepackage{amsmath}%
 \usepackage{amsfonts}%
 \usepackage{amssymb}%
 \usepackage{graphicx}
+\usepackage{todonotes}
+\usepackage{proba}
 %-------------------------------------------
 \newtheorem{theorem}{Theorem}
 \newtheorem{acknowledgement}[theorem]{Acknowledgement}
@@ -31,23 +33,19 @@
 \newtheorem{solution}[theorem]{Solution}
 \newtheorem{summary}[theorem]{Summary}
 \newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
-
 \begin{document}
+	\maketitle
 
-\maketitle
-
-\begin{abstract}
-Gabriel:
-Aqui anexa Los paquetes y contenido de lo que llevas escrito.
-Si necesitas carpetas agregalas.
-Tabien sube el archivo bib y las figuras en extencion eps de 
-la simulaciones del modelo determinista que estamos perturbando.
-\end{abstract}
-
-\input{./Sections/Model}
-\input{./Sections/Existence}
-\input{./Sections/Extinction}
-\input{./Sections/Persistence}
-
-
+	\begin{abstract}
+	\end{abstract}
+	\todo{Gabriel:
+		Aqui anexa Los paquetes y contenido de lo que llevas escrito.
+		Si necesitas carpetas agregalas. Tabien sube el archivo bib 
+		y las figuras en extencion eps de la simulaciones del modelo
+		determinista que estamos perturbando.
+	}
+	\input{./Sections/Model}
+	\input{./Sections/Existence}
+	\input{./Sections/Extinction}
+	\input{./Sections/Persistence}
 \end{document}
