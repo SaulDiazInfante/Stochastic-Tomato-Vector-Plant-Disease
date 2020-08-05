@@ -1,11 +1,38 @@
+%!TEX root = ../main.tex
 \section{Existence of unique positive solution}
+Thereom *.* of [Mao Book] assures ths existence of unique solution of \eqref{system_3} 
+in a compact interval. Since we study asymptotic behaviour, we have to assure the existence of 
+unique positive invariant solution to SDE (*). To this end, let $\R^n_+$ the first octant of $\R ^ n$ and consider  
+$$	{
+	\mathbf{E}:= 
+		\left \{ 
+			(S_p, L_p, I_p, S_v, I_v)^{\top} \in \R^5_+: \quad
+			\leq S_p + L_p + I_p \geq N_p, \quad
+			S_v + I_v \leq \frac{\mu}{\gamma}
+		\right \},
+	}
+$$
+the following result prove that this set is positive invariant.
 
 \begin{theorem}\label{existence-unique}
-	For any initial values $(L_p(0),I_p(0),S_v(0),I_v(0))\in (0,N_p)\times(0,N_p)\\\times(0,N_v)\times(0,N_v)$, the SDE (\ref{system_3}) has a unique global positive solution $(L_p(t),I_p(t)\\,S_v(t),I_v(t))\in (0,N_p)\times(0,N_p)\times(0,N_v)\times(0,N_v)$ for all $t \geq 0$ with probability one, namely,
-	\begin{align*}
-		\mathbb{P}[(L_p(t),I_p(t),S_v(t),I_v(t))\in (0,N_p)\times(0,N_p)\times(0,N_v)\times(0,N_v)\,\,\forall t\geq 0]=1.
-	\end{align*}
+	For any initial values 
+	$
+		(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0)) 
+		\in \mathbf{E}
+	$, 
+	 exists unique invariant global positive solution to SDE \eqref{system_3}
+	$
+	 	(S_p(t), L_p(t), I_p(t) ,S_v(t), I_v(t)) ^{\top}
+	$ with probability one, that is,
+	\begin{equation*}
+		\probX{
+			(L_p(t), I_p(t), S_v(t), I_v(t)) 
+			\in 
+			\mathbf{E}, \quad
+			\forall t \geq 0
+		} = 1.
+	\end{equation*}
 \end{theorem}
 \begin{proof}
-	
+%	
 \end{proof}
