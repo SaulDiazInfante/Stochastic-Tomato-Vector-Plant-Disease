@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[smallextended]{svjour3}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}%
 \usepackage{amsfonts}%
@@ -7,35 +7,27 @@
 \usepackage{todonotes}
 \usepackage{proba}
 \usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{latexsym}
+\usepackage{mathptmx}
 %-------------------------------------------
-\newtheorem{theorem}{Theorem}
-\newtheorem{acknowledgement}[theorem]{Acknowledgement}
-\newtheorem{algorithm}[theorem]{Algorithm}
-\newtheorem{axiom}[theorem]{Axiom}
-\newtheorem{case}[theorem]{Case}
-\newtheorem{claim}[theorem]{Claim}
-\newtheorem{conclusion}[theorem]{Conclusion}
-\newtheorem{condition}[theorem]{Condition}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{criterion}[theorem]{Criterion}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{exercise}[theorem]{Exercise}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem{problem}[theorem]{Problem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{solution}[theorem]{Solution}
-\newtheorem{summary}[theorem]{Summary}
-\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
-
-\title{Stochastic-Tomato-Vector-Plant-Disease}
-\author{Gabriel Adrian Salcedo Varela  \and Saúl Díaz Infante }
-\date{\today}
-
+\smartqed 
 \begin{document}
+	\title{Stochastic-Tomato-Vector-Plant-Disease}
+	\author{Gabriel A. Salcedo Varela  \and Saúl Diaz-Infante }
+	\date{\today}
+	\institute{F. Author \at
+              first address \\
+              Tel.: +123-45-678910\\
+              Fax: +123-45-678910\\
+              \email{fauthor@example.com}           
+           \and
+           S. Author 
+              second address
+	}
+
+\date{Received: date / Accepted: date}
+
 	\maketitle
 	%
 	\begin{abstract}
@@ -49,6 +41,8 @@
 	\input{Sections/Model}
 	\input{Sections/Existence}
 	\input{Sections/Extinction}
+		\input{Sections/Prove_Theorem_Rs0}
 	\input{Sections/Persistence}
-	\input{Sections/Prove_Theorem_Rs0}
+	
+	\input{RerencesGuide}
 \end{document}

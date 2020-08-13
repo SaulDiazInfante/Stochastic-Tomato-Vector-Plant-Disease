@@ -1,21 +1,6 @@
 %!TEX root = ../main.tex
 \section{Deterministic base dynamics}
 	\todo{translate this section}
-		En esta secci\'on, vamos a definir el modelo b\'asico que trabajaremos,
-	consideraremos que las  plantas se dividen en tres tipos: plantas susceptibles,
-	latentes e infectadas. Las moscas  blancas, las cuales llamaremos vectores, se
-	dividen en susceptibles e infectadas.
-
-	Las plantas susceptibles pasan a ser plantas latentes cuando un vector infectado
-	se alimenta de ella a una tasa de $\beta_p$, continuando el proceso cuando las
-	plantas latentes se convierten en plantas infectadas a una tasa de $b$, en cada
-	uno de estos casos consideraremos que estaremos revisando los cultivos para el
-	cual removeremos plantas latentes e infectadas si se detecta que dicha planta
-	esta infectada a una tasa de $r_1$ y $r_2$ respectivamente.
-
-	Plants become latent by infected vectors, replanting latent and infected plants,
-	latent plants become infectious plants, vectors become infected by infected
-	plants, vectors die or depart per day, immigration from alternative hosts.
 
 \begin{equation} 
 	\label{system_1} 
@@ -42,14 +27,6 @@
 	\end{aligned} 
 \end{equation} 
 \todo{Make a table for description of  all parameters}
-donde $\beta_p$: tasa de infecci\'on de las plantas susceptibles mediante un
-vector infectado. $r_1$: tasa de replanteo de plantas latentes. $r_2$: tasa de
-replanteo de plantas infecciosas. $b$: tasa de latencia (planta latente se
-convierte en infecciosa). $\beta_v$: tasa de infecci\'on de los vectores
-susceptibles mediante una planta infectada. $\gamma$: tasa de muerte o
-alejamiento de los vectores, $\mu$: migraci\'on de los vectores de plantas
-hospederas alternas, $\theta$: proporci\'on de migraci\'on de los vectores.
-
 \todo{Redact this conservation law to the entire system \eqref{system_1}.
 Write a introductory paragraph to Thm 1}
 
