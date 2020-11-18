@@ -1,259 +1,240 @@
 %!TEX root = ../main.tex
-Our analysis needs the following hypotesis.
-\begin{enumerate}[(H-1)]
-	\item
-	 	According to SDE \eqref{system_3}, replatin rates satisfies 
-	  	$r_1=r_2 = r$. 
-	\item
-		The replanting noise intesities are equal
-	  	$\sigma_L = \sigma_I = \sigma$.
-\end{enumerate}
+\section{Existence of unique positive solution}
+Thereom *.* of [Mao Book] assures ths existence of unique solution of 
+\eqref{system_3} in a compact interval. Since we study asymptotic behaviour, 
+we have to assure the existence of unique-globally-positive invariant solution 
+of SDE (*). To this end, let $\R^n_+$ the first octant of $\R ^ n$ and 
+consider  
+$$	{
+	\mathbf{E}:= 
+		\left \{ 
+			(S_p, L_p, I_p, S_v, I_v)^{\top} \in \R^5_+: \quad
+			0\leq S_p + L_p + I_p \leq N_p, \quad
+			S_v + I_v \leq \frac{\mu}{\gamma}
+		\right \},
+	}
+$$
+the following result prove that this set is positive invariant.
 %
-\todo{Define here the infinitesimal operator $\mathcal{L}$.}
-
-
-We define the repoductive nomber of our stochastic model in SDE (*) by
-
-\begin{equation}
-	\label{eq5}
-	\mathcal{R}_0^s :=\frac{\beta_p\beta_v}{\gamma r}.
-\end{equation}
-As our deterministic base structure this paramenters summarizes the behavior of 
-extinction and persistence according with a threshold.
-
-
-
-\begin{theorem}\label{theorem_2}
-	Let $(S_p(t),L_p(t),I_p(t),I_v(t))$ be the solution of 
-	(\ref{system_3}) 
-	%\todo{fix the reference, note that Eq(3) is a deterministic structure}
-	with initial condition $(S_p(0),L_p(0),I_p(0),I_v(0))\in \mathbf{E}$.
-	If $0 \leq \mathcal{R}_0 ^ s < 1$  then, infected individuals 
-	in SDE (*) tends to zero exponentially a.s, that is,
-	the disease will extinguishes with probability one.
+\begin{theorem}\label{existence-unique}
+	For any initial values 
+	$
+		(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0))^{\top}
+		\in \mathbf{E}
+	$, 
+	exists unique a.s. invariant global positive solution to SDE 
+	\eqref{system_3} in $\mathbf{E}$, that is,
+	\begin{equation*}
+		\probX{
+			(L_p(t), I_p(t), S_v(t), I_v(t)) 
+			\in 
+			\mathbf{E}, \quad
+			\forall t \geq 0
+		} = 1.
+	\end{equation*}
 \end{theorem}
-
+%
 \begin{proof}
-	The proof consitst verify the hypotheses of Khasminskii Theorem [*] for the Lyapunov 
-	function 	
-	\begin{equation}
-		\label{eq4}
-		V(S_p,L_p,I_p,S_v,I_v) = 
-			\left (
-				S_p - S_p^0 - S_p^0
-				\ln
+		Since the right hand side of system \eqref{system_3} are quadratic, 
+	linear and constans terms, this imply that they are locally Lipschitz. We 
+	know by [ref Mao], that for any initial condition
+	$
+		(S_p(0), L_p(0), I_p(0), S_v (0), I_v(0))^{\top}\in \mathbf{E}
+	$ 
+	there is a unique maximal local solution 
+	$(S_p(t), L_p(t), I_p(t), S_v(t), I_v(t))^{\top}$ 
+	at $t\in [0,\tau_e)$, where 
+	$\tau_e$ is the explosion time. Let $k_0>0$ be sufficiently large, and 
+	define the stopping time
+	\begin{multline}
+		\label{eqn:invariatn_set}
+		\tau_k = %
+			\inf
+			\left\{
+				t \in [0,\tau_e)
+				: 
+				L_p(t) \notin 
+					\left(
+						\frac{1}{k_0},
+					 N_p - \frac{1}{k_0}
+					\right)		
+			%\right.
+			%\\
+			%\left.
+			 \bigcup 
+				I_p(t)
+				\notin
 				\left(
-					\frac{S_p}{S_p^0}
+					\frac{1}{k_0}, 
+					N_p-\frac{1}{k_0}
 				\right)
-			\right) + 
-			L_p + 
-			I_p +
-			\frac{\beta_p N_p}{\gamma N_v} I_v .
+			\right.
+			\\
+			\bigcup
+			\left.		
+					I_v(t) 
+					\notin
+					\left(
+						\frac{1}{k_0},
+						N_v - \frac{1}{k_0}
+					\right)
+			\right\},
+		\end{multline}
+%	
+	\improvement{Give an argument}
+	We know that $\tau_k \nearrow \tau_\infty$. 
+	In other words, $\tau_\infty = \infty$ a.s. 
+	implies
+	\begin{equation}
+		\label{eqn:invariance_prop}
+		(
+			S_p(t),
+			L_p(t),
+			I_p(t),
+			S_v(t),
+			I_v(t)
+		)^{\top}\in \mathbf{E}
 	\end{equation}
+	 a.s. for all $t\geq 0$. Thus, 
+	we  show that $\tau_\infty=\infty$ a.s. To this end,  we proced
+	by contradiction. Suppose that the above statement is false for a given time $t$, then there is 
+	a pair of constants $T>0$ and $\epsilon  \in (0,1)$  such that some component from $L_p,I_p,I_v$, or $L_p$, get-outs from its corresponding 
+	interval
+	$$
+	\left(
+		\frac{1}{k_0}, 
+	N_{\bullet} - \frac{1}{k_0}
+	\right), 
+	$$
+	then %
+	$
+		\P[\tau_\infty\leq T]>\epsilon 
+	$. 
+	Hence, there is an integer $k_1\geq k_0$ such that
+%	
+	\begin{equation}\label{Positive1}
+		\P[\tau_k\leq T]>\epsilon,
+		\quad \forall k\geq k_1.
+	\end{equation}
+	%
+	Define a function $V_p:(0,N_p)\rightarrow \mathbb{R}_+$ by
+%	
+	\begin{equation*}
+		V_p(x) := 
+			\frac{1}{x} + 
+			\frac{1}{N_p-x}
+	\end{equation*}
+%	
+	According to the inifinitesimal operation $\mathcal{L}$
+	see APPENDIX
+	\improvement{Write auxiliar results in a fucking appendix}
+	By diffusion operator, we have, for any $t\in [0,T]$ and $k\geq k_1$ 
+%
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			=&	
+				\left[
+					-\frac{1}{L_p^2} + 
+					\frac{1}{(N_p - L_p) ^ 2}
+				\right]
+				\left[
+					\beta_p S_p 
+					\frac{I_v}{N_v} - 
+					(b + r_1) L_p\right]
+				\\
+			&+
+				\frac{1}{2}
+				\left[
+					\frac{2}{L_p^3} + 
+					\frac{2}{(N_p - L_p)^3}
+				\right]
+				\sigma_p ^ 2
+				\frac{L_p^2 S_p^2}{N_p^2}.
+			\\
+	\end{align*}
+%	
+	Expanding each term, we have
+	
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&=	
+				-\beta_p\frac{S_p I_v}{L_p^2 N_v}+\beta_p\frac{S_p I_v}{(N_p -L_p)^2 N_v}+\frac{(b+r_1)}{L_p}-\frac{(b+r_1)L_p}{(N_p-L_p)^2}\\
+			&+
+				\left[\frac{1}{L_p^3}+\frac{1}{(N_p-L_p)^3}\right]\sigma_p^2\frac{L_p^2 S_p^2}{N_p^2}.\\
+	\end{align*}
+%	
+	Since each term is positive, we can bound the above by
+	
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&\leq	
+				\beta_p\frac{S_p}{(N_p -L_p)^2}+\frac{(b+r_1)}{L_p}+\left[\frac{1}{L_p^3}+\frac{1}{(N_p-L_p)^3}\right]\sigma_p^2\frac{L_p^2 S_p^2}{N_p^2}.
+	\end{align*}
+	
+	Moreover, by definition of $N_p$, we can bound $S_p\leq N_p-L_p=S_p+I_p$ to obtain
+	
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&\leq		
+				\frac{\beta_p}{N_p -L_p}+\frac{(b+r_1)}{L_p}+\sigma_p^2\left[\frac{1}{L_p}+\frac{L_p^2}{N_p^2}\frac{1}{N_p-L_p}\right].
+	\end{align*}
+	
+	And this implies that
+	
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&\leq		
+			\frac{b+r_1}{L_p}+\frac{\beta_p}{N_p -L_p}+\sigma_p^2\left[\frac{1}{L_p}+\frac{1}{N_p-L_p}\right].
+	\end{align*}
+%	
+	Now define $C := (b+r_1) \vee \beta_p +\sigma_p^2$, we obtain the following inequality
+	
+	\begin{align}\label{Positive2}
+		\mathcal{L}[V(L_p)] 
+			&\leq		
+				C V_p(L_p).
+	\end{align}
+%
+	By It\^{o}'s formula and applying expectation, we have, for any $t \in [0,T]$ and $k\geq k_1$
+	
+	\begin{align*}
+		\E V(L_p(t\wedge\tau_k))&=V(L_p(0))+\E\int_{0}^{t\wedge\tau_k}\mathcal{L}[V(L_p(s))]ds.
+	\end{align*}
+%
+	By equation \eqref{Positive2} and Fubini's Theorem, we have
+	
+	\begin{align*}
+		\E V(L_p(t\wedge\tau_k))&\leq V(L_p(0))+C\int_{0}^{t}\E V(L_p(s\wedge\tau_k))ds.
+	\end{align*}
+	
+	Applying the Gronwall inequality yields that
+	
+	\begin{align}\label{Positive3}
+		\E V(L_p(t\wedge\tau_k))&\leq V(L_p(0))e^{CT}
+	\end{align}
 
-	Let $f$, $g$ respectively be the dirft and difussion of SDE(*).
-	Applyng the inifinitesimal opreator $\mathcal{L}$ we have
-	\todo{In the following step apply the operator $\mathcal{L}$}
+	Set $\Omega_k = \{\omega : \tau_k\leq T\}$ for $k\geq k_1$, note that by equation \eqref{Positive1}, $\P(\Omega_k)> \epsilon$. For every $\omega \in \Omega_k$, we have $L_p(t,\omega)\in \left(\frac{1}{k_0},N_p-\frac{1}{k_0}\right)^{\complement}$, and hence
+	
 	\begin{align*}
-		V_x f &=
-			\left(
-				1 - \frac{S_p^0}{S_p}
-			\right)
-			\left(
-				-\frac{\beta_p}{N^\infty_v}
-				S_pI_v + rN_p - r S_p
-			\right) + 
-			\frac{\beta_p}{N^\infty_v} S_p I_v - 
-			(b + r) L_p
-			\\
-			& +
-				b L_p - rI_p + 
-				\frac{ \beta_p N_p}{\gamma N ^ \infty_v}
-				\left(
-					\frac{\beta_v N_v}{N_p}I_p - 
-					\frac{\beta_v}{N_v ^ \infty} I_vI_p - 
-					\gamma I_v\right
-				)
-			\\
-			& =
-				-rS_p 
-				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 -
-				\frac{\beta_p}{N_v ^ \infty} S_pI_v +
-				\frac{\beta_p}{N_v ^ \infty} I_vS_p ^ 0 + 
-				\frac{\beta_p}{N_v ^ \infty} S_pI_v -
-				r(L_p + I_p)
-			\\
-			& +
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty _ v}
-			  	\left(
-			  		\frac{\beta_v N_v}{N_p}I_p - 
-			  		\frac{\beta_v}{N_v ^ \infty} I_v I_p - 
-			  		\gamma I_v
-			  	\right)
-			\\
+		V_p(L_p(t,\omega))
 			&=
-				-r S_p
-				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 + 
-				\frac{\beta_p}{N_v ^ \infty} I_v S_p ^ 0 - 
-				r (L_p + I_p) + 
-				\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-				\frac{\beta_v N_v}{N_p}I_p
-			\\
-			  &-	
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-			  	\frac{\beta_v}{N_v ^ \infty} I_v I_p -
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v} \gamma I_v.
+				\frac{1}{L_p}+\frac{1}{N_p-L_p}\\
+			&\geq 
+				k +\frac{1}{N_p-\frac{1}{k}}\\
+			&\geq k.
 	\end{align*}
-		Then,
+%	
+	It follows from equation \eqref{Positive3}, that
 	
-	\begin{align*}
-		V_x f &=
-				-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2-\left[\frac{\beta_p N_p}{\gamma N^\infty_v}\gamma-\frac{\beta_p N_p}{N_v^\infty}\right]I_v+\left[\frac{\beta_p N_p}{\gamma N^\infty_v}\beta_v\frac{N_v^\infty}{N_p}-r\right]I_p\\
-		 	  &-
-				rL_p-\frac{\beta_p N_p}{\gamma N^\infty_v}\frac{\beta_v}{N_p}I_vI_p\\
-			  &=
-			  	-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2 + \left[\frac{\beta_p N_p}{\gamma N^\infty_v}\beta_v\frac{N_v^\infty}{N_p}-r\right]I_p-rL_p-\frac{\beta_p N_p}{\gamma N^\infty_v}\frac{\beta_v}{N_p}I_vI_p\\
-			  &=
-			  	-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2 + r\left[\frac{\beta_p\beta_v}{\gamma r}-1\right]I_p-rL_p-\frac{\beta_p\beta_v}{\gamma N^\infty_v}I_vI_p.
-	\end{align*}
-	
-	Expressing the right hand side of above equation in term of the basic reproductive number, $\mathcal{R}^s_0$ we get
-	
-	\begin{align*}
-		V_x f &=
-		-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2 + r\left[\mathcal{R}^s_0-1\right]I_p-rL_p-\frac{\beta_p\beta_v}{\gamma N^\infty_v}I_vI_p.
-	\end{align*}
+	\begin{equation*}
+		V_p(L_p(0))e^{CT}\geq \E \left[1_{\Omega_k}(\omega)V_p(L_p(\tau_k,\omega))\right]\geq k\P (\Omega_k)\geq \epsilon k.
+	\end{equation*}
+%
+	Letting $k\rightarrow \infty$ leads to the contradiction
 
-	Moreover,
-	
-	\begin{align*}
-		\frac{1}{2}trace(g^TV_{xx}g) 
-			&=
-				\frac{1}{2} \sigma^2N_p\left(\frac{N_p-S_p}{S_p}\right)^2\\
-			&\leq
-				\frac{1}{2} \sigma^2 N_p.
-	\end{align*}
-	The stochastic terms are not neccesary, because they do a martingale procces and therefore, when we use integral and expectation they vanising.
-	Incorporation all terms calculate above, we obtain
-	
-	\begin{align*}
-		dV(X) 
-			&=
-				-rS_p 
-				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 + 
-				r
-				\left[
-					\mathcal{R} ^ s_0 - 1
-				\right] I_p - 
-				r L_p - \frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p + 
-				\frac{1}{2} \sigma ^ 2 N_p
-				\left(
-					\frac{N_p - S_p}{S_p}
-				\right) ^ 2
-			\\
-			&\leq
-				-r S_p 
-				\left(
-					1 - 
-					\frac{S_p ^ 0}{S_p}
-				\right) ^ 2 + 
-				r
-				\left[
-					\mathcal{R}^s_0 - 1
-				\right] I_p - 
-				r L_p - 
-				\frac{\beta_p \beta_v }{\gamma N^ \infty_v} I_v I_p + 
-				\frac{1}{2} \sigma ^ 2 N_p.
-	\end{align*}
-	Define $LV(X)$ as
-	\begin{align*}
-		LV(X) 
-			&=
-				-rS_p 
-				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 + 
-				r 
-				\left[
-					\mathcal{R} ^ s_0 - 1
-				\right] I_p - 
-				r L_p - 
-				\frac{\beta_p\beta_v}{\gamma N^\infty_v} I_v I_p + 
-				\frac{1}{2} \sigma^2 N_p.
-	\end{align*}
-	
-	Using It\^{o}'s formula and integrating $dV$ from $0$ to $t$ as well as taking expectation yield the following
-	
-	\begin{align*}
-		0 
-			& \leq
-				\E V(t)- 
-				\E V(0)
-				\leq 
-					\E \int_{0}^{t} L V(X(s)) ds
-		\\
-			& \leq
-				-\E
-				\int_{0} ^ {t}
-					\left[
-						r S_p 
-						\left(
-							1 - \frac{S_p^0}{S_p}
-						\right) ^ 2 - 
-						r 
-						\left[
-							\mathcal{R} ^ s_0 - 1
-						\right] I_p + 
-						r L_p + 
-						\frac{\beta_p\beta_v}{\gamma N ^ \infty_v} I_v I_p
-					\right] ds +  
-				\frac{1}{2} \sigma ^ 2 N_p
-	\end{align*}
-	Therefore,
-	\begin{align*}
-		\lim_{t\to\infty}
-		\frac{1}{t} 
-		\E \int_{0}^{t}
-		\left[
-			-r S_p 
-			\left(
-				1 - 
-				\frac{S_p ^ 0}{S_p} 
-			\right) ^ 2 + 
-			r 
-			\left[
-				\mathcal{R} ^ s_0 - 1
-			\right] I_p - 
-			r L_p - 
-			\frac{\beta_p \beta_v}{\gamma N^\infty_v}
-			I_v I_p 
-		\right] ds
-		\leq \frac{1}{2}\sigma^2 N_p.
-	\end{align*}
-
-	\begin{align*}
-		\lim_{t \to \infty}
-			\frac{1}{t}
-				\E \int_{0}^{t}
-				\left[
-					r [\mathcal{R}^s_0 - 1 ]
-						I_p - rS_p
-						\left(
-							1 - \frac{S ^ 0_p }{ S_p }
-						\right) ^ 2 -
-						r L_p - 
-						\frac{\beta_p\beta_v}{\gamma} I_vI_p
-					\right]
-					dr
-					\leq 
-					\frac{1}{2} \sigma ^ 2 N_p ,\, a.s.
-	\end{align*}
+	\begin{equation*}
+		\infty>V_p(L_p(0))e^{CT}\geq \infty.	
+	\end{equation*}
+%
+	So we must therefore have $\tau_\infty=\infty$ a.s., and the proof is complete.	
 \end{proof}
-
-\todo{Write a paragraph to describe why the limit above exponentially goes to zero.}
