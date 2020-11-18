@@ -10,12 +10,18 @@
 \usepackage{booktabs}
 \usepackage{latexsym}
 \usepackage{mathptmx}
+\usepackage{csquotes}
 %-------------------------------------------
 \smartqed 
 \begin{document}
-	\title{Threshold behavior of a epidemic vector-plant model: The Yellow Curl Virus}
-	\author{Gabriel A. Salcedo Varela  \and Saúl Diaz-Infante }
-	\date{\today}
+	\title{%
+		Threshold behavior of a epidemic vector plant model:
+		The Tomato Yellow Curl Virus
+	}
+	\subtitle{%
+		Asymtotic analysis and simulation.
+	}
+	\author{Gabriel A. Salcedo Varela  \and Sa\'ul Diaz-Infante }
 	\institute{F. Author \at
               first address \\
               Tel.: +123-45-678910\\
@@ -25,12 +31,17 @@
            S. Author 
               second address
 	}
-
-\date{Received: date / Accepted: date}
-
+	\date{Received: date / Accepted: date}
 	\maketitle
 	%
 	\begin{abstract}
+		BACKGROUND
+		\\
+		PROBLEM SETUP
+		\\
+		FINDINGS 
+		\\
+		IMPLICATIONS
 	\end{abstract}
 	\todo{Gabriel:
 		Aqui anexa Los paquetes y contenido de lo que llevas escrito.
@@ -42,6 +53,8 @@
 	\section{Model formulation}
 		\subsection{Deterministic base dynamics}
 		\input{Sections/Model}
+	
+	\input{Sections/Equilibrium_Points}
 	\section{Existence of a unique positive solution}
 		\input{Sections/Existence}
 	\section{Extinction of the disease}

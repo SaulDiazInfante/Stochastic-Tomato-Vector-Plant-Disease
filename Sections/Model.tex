@@ -1,10 +1,7 @@
 %!TEX root = ../main.tex
+\section{Deterministic base dynamics}
 	\todo{translate this section}
 
-
-\paragraph{Model description and parameters meaning}
-
-\paragraph{Hold citation and figure with data}
 \begin{equation} 
 	\label{system_1} 
 	\begin{aligned} 
@@ -33,8 +30,6 @@
 \todo{Redact this conservation law to the entire system \eqref{system_1}.
 Write a introductory paragraph to Thm 1}
 
-\paragraph{Free disease and endemiq fixed points}
-
 \begin{theorem}\label{theorem_1}
 	With the notation of ODE \eqref{system_1}, let
 	\begin{equation*}
@@ -60,9 +55,9 @@ Write a introductory paragraph to Thm 1}
 	\end{equation*}
 \end{theorem}
 
-\paragraph{ways of uncertinity quantification}
-
-	Following ideas from [HOLD], we quantify uncertinity in replanting rate of
+\todo{Why we want to normalize?}
+%
+Following ideas from [referencia], we quantify uncertinity in replanting rate of
 plants, and  died rate of vector, $r_1$, $r_2$ and $\gamma$, to this end, we
 perturb parameters  \todo{write here the parameters} $r_1 \dots$ whit a Winner
 process to obtain a stochastic differential equation(SDE). Here, the 
@@ -73,25 +68,25 @@ $\gamma$ in the infinitiesimal time interval $[t, t + dt)$ by
 \begin{equation}
 	\label{eq1}
 	\begin{aligned}
-		{r}_1 dt &\rightsquigarrow r_1 dt + \sigma_p  S_p \ dB_p(t),
+		{r}_1 dt \rightsquigarrow r_1 dt + \sigma_L dB_p(t),
 		\\
-		{r}_2 dt &\rightsquigarrow r_2 dt + \sigma_p S_p \ dB_p(t),
+		{r}_2 dt \rightsquigarrow r_2 dt + \sigma_Id B_p(t),
 		\\
-		\gamma dt &\rightsquigarrow \gamma dt + \sigma_v \ dB_v(t).
+		\gamma dt \rightsquigarrow \gamma dt + \sigma_vd B_v(t).
 	\end{aligned}
 \end{equation}
-\todo{Is the same Brownian motion for the three equations?}
+%\todo{Is the same Brownian motion for the three equations?}
 
 	Note that right hand side of \eqref{eq1} is a random perturbations of parameters
 $r_1$, $r_2$, $\gamma$, with mean
 $
-	\EX{r_1 dt + \sigma_p dB(t)}
+	\EX{r_1 dt + \sigma_L dB_p(t)}
 $
 and variance 
 \todo{Note that here we will use the latex proba package, plase use the same
 commands in the remain of the manuscript}
 $
-	\VarX{r_1 dt + \sigma_L dB(t)} = \sigma_L^2dt
+	\VarX{r_1 dt + \sigma_L dB_p(t)} = \sigma_L^2dt
 $, 
 $
 	\mathbb{E}(\tilde{r}_2dt) = r_2dt
@@ -120,29 +115,30 @@ Thus, we establish an stochastic extencion from deterministic tomato model
 			\right)dt 
 			+ (\sigma_L L_p
 			+ 
-			\sigma_I I_p)dB(t) 
+			\sigma_I I_p)dB_p(t) 
 		\\
 		dL_p &=
 			\left(
 				\beta_p S_p \frac{I_v}{N_v} - b L_p - r_1 L_p
 			\right) dt 
-			- \sigma_L L_p dB(t) 
+			- \sigma_L L_p dB_p(t) 
 		\\
 		d I_p &=
 			\left(
 				b L_p - r_2 I_p
 			\right) dt 
-			- \sigma_I I_p dB(t) 
+			- \sigma_I I_p dB_p(t) 
 		\\
 		dS_v &=
 			\left(
 				-\beta_v S_v \frac{I_p}{N_p} - \gamma S_v  + (1-\theta) \mu
-			\right)dt - \sigma_v S_v dB(t) 
+			\right)dt - \sigma_v S_v dB_v(t) 
 		\\
 		d I_v &=
 			\left(
 				\beta_v S_v \frac{I_p}{N_p} -\gamma I_v + \theta \mu
 			\right) dt 
-			- \sigma_v I_v dB(t).
+			- \sigma_v I_v dB_v(t).
 	\end{aligned}
 \end{equation}
+
