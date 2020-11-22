@@ -1,0 +1,1018 @@
+%!TEX root = ../main.tex
+
+	In the case of deterministic models, one of the problems taken into
+account is to determine under what conditions the endemic equilibrium point is 
+attractor or asymptotically stable. In the case of stochastic models, said 
+endemic equilibrium point is not an equilibrium point. To determinate the 
+persistence in the stochastic cases, we use the following definition.
+
+	So how do we determine if the disease is going to persist? In this section 
+we will give the conditions under which the difference between the solution of 
+the system \eqref{system_3} and $ (S_p^*, L_p^*, I_p^*, S_v^*, I_v^*)^\top$ is 
+small if the noise is weak, reflecting that the disease is prevalent.
+\begin{definition}\label{def_per}
+	Let $x = (S_p,L_p,I_p,S_v,I_v)^{\top}$ be the solution of 
+	system \eqref{system_3}. We said that this solution process is persistent in mean if	
+	\begin{equation}
+	    \liminf_{
+	    	t \to
+	    	\infty
+	    }
+	    \frac{1}{t}
+	    \int_0^t x(r) dr >0,
+	    \qquad a.s.
+    \end{equation}
+\end{definition}
+For establish the persistent of the endemic equilibrium point of the system 
+\eqref{system_3}, we need consider the opposite conditions of 
+Theorem *%\ref{theorem_2}. 
+Our analysis require the following hypothesis.
+\info{Who is theorem 2. Change label to a explicit meanin not fucking numbers}
+\begin{enumerate}[(A)]
+	\item
+	According to Theorem %\ref{theorem_2}, 
+	we need consider  
+	$$
+		\frac{\beta_p^2+r^2}{2 \sigma_p^2} + 
+		2\beta_p - r>0,
+	$$ 
+	\item
+	and
+	$$
+		\frac{\beta_v^2}{2 \sigma_v^2}+\beta_v-\gamma +\theta\mu>0
+	$$.
+\end{enumerate}
+The following Theorem gives a upper bounds for the system \eqref{system_3}.
+%
+\info{Disucssuion about relation between $R_0^D$ $R_0^S$}
+\begin{theorem}
+	\label{Upper_Bound}
+	Let $R^d_0>1$ and conditions (A)-(B) holds. 
+	Consider the endemic deterministic fixed point 
+	$(S_p^*,L_p^*,I_p^*,S_v^*,I_v^*)^\top$. Then 
+	\begin{equation}\label{UP-1}
+		\begin{aligned}
+			&\limsup\limits_{t \rightarrow 	\infty}
+			\frac{1}{t}
+			\int_{0}^{t}( r
+				\left(
+					1 - 2 \rho_1
+				\right)
+				\left(
+					(S_p - S_p^*) ^ 2 + 
+					(L_p - L_p^*) ^ 2 + 
+					(I_p - I_p^*) ^ 2
+				\right)
+			\\
+			&+
+				\gamma
+				\left(
+					1 - 2 \rho_2
+				\right)
+				(S_v - S_v) ^ 2 - 
+				\gamma
+				\left(
+					1 - 
+					\frac{1}{4 \rho_2}
+				\right)
+				(I_v - I_v)^2)ds
+			\\
+			&\leq
+				K_2
+				\alpha_1 + K_1
+				\alpha_2 + 
+				\frac{1}{2}
+				\left(
+					\sigma_p ^ 2
+					( L_p ^ *K_1 + I_p ^ *K_2 + 2N_p^2)
+					+3 N_v^2 \sigma_v^2
+				\right)
+				\qquad\mbox{a.s.}
+		\end{aligned}
+	\end{equation}
+%
+	where 
+	$
+		K_1 = \frac{N_p^2}{L_p^*}
+	$, 
+	$
+		K_2 = \frac{N_p^2}{I_p^*}
+	$, 
+	$
+		\rho_1 \in (0, \frac{1}{2})
+	$ and 
+	$
+		\rho_2\in (\frac{1}{4}, \frac{1}{2})
+	$.
+\end{theorem}
+%
+\begin{proof}
+	By hypothesis 
+	$
+		(S_p^*, L_p^*, I_p^*, S_v^*, I_v^*) ^ \top
+	$ is the endemic equilibrium of system \eqref{system_1}, we have
+	\begin{equation}
+		\begin{aligned}
+			rN_p
+				&=
+					rS_p^* + 
+					\frac{\beta_p}{N_v}S_p^*I_v^*,
+					\quad\quad 
+					\frac{\beta_p}{N_v}S_p^*I_v^* = (b+r)L_p^*,
+			\\
+			bL_p^*
+				&=
+					rI_p^*, 
+					\quad\quad 
+					(1-\theta)
+					\mu = \frac{\beta_v}{N_p}S_v^*I_p^*+\gamma S_v^*,
+			\\
+					\theta\mu &= 
+					\gamma I_v^* -\frac{\beta_v}{N_p}S_v^*I_p^*.
+		\end{aligned}
+	\end{equation}
+	Let consider the following Lyapunov function
+	\begin{align*}
+		V(S_p,L_p,&I_p,S_v,I_v) = 
+				K_1
+				\left(
+					L_p - L_p^* - 
+					L_p^*\log
+					\left(
+						\frac{L_p}{L_p^*}
+					\right)
+				\right) + 
+				 K_2
+				\left(
+				 	I_p - I_p^* - I_p^ * 
+				 	\log
+					\left(
+						\frac{I_p}{I_p^*}
+				 	\right)
+				\right)
+			\\
+				&+
+				\frac{1}{2}
+				\left(
+					(S_p - S_p^*) + 
+					(L_p - L_p^*) + 
+					(I_p - I_p^*)
+				\right)^2 + 
+				\frac{1}{2}
+				\left(
+					(S_v - S_v^*) + 
+					(I_v - I_v^*)
+				\right)^2		
+	\end{align*}
+	We can rename the Lyapunov function as the follows
+	\begin{equation}
+		V(S_p,L_p,I_p,S_v,I_v)= K_1V_1+K_2V_2+V_3+V_4,
+	\end{equation}
+%
+	and we work with each $V_i$. For $V_1$, we have
+	\begin{align*}
+		\mathcal{L} V_1 
+			&= 
+				\left(
+					1 - 
+					\frac{L_P^*}{L_p}
+				\right)
+				\left(
+					\frac{\beta_p}{N_v}S_pI_v - 
+					(b+r) L_p
+				\right) + 
+				\frac{1}{2}
+				\frac{\sigma_p^2S_p^2L_p^*}{N_p^2}
+			\\
+			&=
+				\left(
+					1 - \frac{L_P^*}{L_p}
+				\right)
+				\left(
+					\frac{\beta_p}{N_v} S_pI_v - 
+					\frac{\beta_p}{N_v} S_p ^* I_v ^* 
+					\frac{L_p}{L_p^*}
+				\right) + 
+				\frac{1}{2}
+				\frac{\sigma_p^2S_p^2L_p^*}{N_p^2}
+			\\
+			&=
+				\frac{\beta_p}{N_v}
+				\left(
+					1 - 
+					\frac{L_P^*}{L_p}
+				\right)
+				\left(S_pI_v - 
+					\frac{S_p^*I_v^*L_p}{L_p^*}
+				\right) + 
+				\frac{1}{2}
+				\frac{\sigma_p^2S_p^2L_p^*}{N_p^2}
+			\\
+			&=
+				\frac{\beta_p}{L_pN_v}
+				\left(
+					L_p - L_p^*
+				\right)
+				\left(
+					S_pI_v - S_p ^ *I_v^*
+					\frac{L_p}{L_p^*}
+				\right) + 
+				\frac{1}{2}
+				\frac{\sigma_p^2 S_p^2 L_p^*}{N_p^2}.
+	\end{align*}
+%
+Now, for $V_2$ we have
+%
+	\begin{align*}
+		\mathcal{L}V_2 
+			&= 
+				\left(
+					1 - 
+					\frac{I_P^*}{I_p}
+				\right)
+				\left(
+					bL_p - r I_p 
+				\right) + 
+				\frac{1}{2}
+				\frac{\sigma_p^2 S_p^2 I_p^*}{N_p^2}
+			\\
+			&= 
+				\frac{1}{I_p}
+				(I_p-I_p^*)
+				\left(
+					\frac{rI_p^*}{L_p^*} - 
+					rI_p
+				\right) + 
+				\frac{1}{2}
+				\frac{\sigma_p^2 S_p^2 I_p^*}{N_p^2}
+			\\
+			&=
+				-\frac{r}{I_p} (I_p - I_p ^ *)
+				\left(I_p - \frac{I_p ^* }{L_p^*}
+				\right) + 
+				\frac{1}{2} 
+				\frac{\sigma_p^2 S_p^2 I_p ^ *}{N_p^2}.
+	\end{align*}
+	%
+	For $V_3$, we obtain
+	\begin{align*}
+		\mathcal{L}V_3
+			&= 
+				\left(
+					(S_p - S_p ^* ) + 
+					(L_p - L_p ^* ) +
+					(I_p - I_p ^*)
+				\right)
+				\left(
+					-\frac{\beta_p}{N_v}S_pI_v + 
+					r N_p - rS_p 
+				\right.\\
+			&+
+				\left.
+					\frac{\beta_p}{N_v} 
+					S_pI_v - (b+r)L_p + bL_p-rI_p
+				\right) + 
+				\sigma_p^2N_p^2
+				\\
+			&=
+				\left(
+					(S_p - S_p^*) + 
+					(L_p - L_p^*) + 
+					(I_p - I_p^*)
+				\right)
+				( r N_p - r S_p - r L_p - r I_p) + 
+				\sigma_p^2N_p^2
+			\\
+			&=
+				\left(
+					(S_p - S_p ^*) + 
+					(L_p - L_p ^*) + 
+					(I_p - I_p^*)
+				\right)
+				( r I_p ^* + r L_p^* + rS_p^* - rS_p - r L_p-r I_p) + 
+				\sigma_p^2 N_p^2
+			\\
+			&=
+				\left(
+					(S_p - S_p ^*) + 
+					(L_p - L_p ^*) +
+					(I_p - I_p ^*)
+				\right)
+				(
+					-r (S_p - S_p ^*) -
+					r (L_p - L_p^*) - 
+					r(I_p-I_p^*)
+				) + 
+				\sigma_p^2 N_p^2
+			\\
+			&=
+				-r
+				\left(
+					(S_p - S_p ^*) + 
+					(L_p - L_p ^*) +
+					(I_p - I_p^*)
+				\right) ^ 2 + 
+				\sigma_p^2 N_p^2.
+	\end{align*}
+	%
+	For the last function $V_4$, we have
+	%
+	\begin{align*}
+		\mathcal{L}V_4
+			&= 
+				\left(
+					(S_v - S_v ^*) + 
+					(I_v - I_v ^*)
+				\right)
+				\left( - 
+					\frac{\beta_v}{N_p} S_vI_p -
+					\gamma S_v + 
+					(1 - \theta) 
+					\mu 
+				\right.\\
+			&+
+				\left.
+					\frac{\beta_v}{N_p}
+					S_v I_p - 
+					\gamma I_v + 
+					\theta \mu 
+				\right) + 
+				\frac{3}{2}
+				\sigma_v ^ 2 N_v ^ 2
+				\\
+			&=
+				\left(
+					(S_v - S_v^*) + 
+					(I_v - I_v^*)
+				\right)
+				(-\gamma S_v + \gamma S_v - \gamma I_v + \gamma I_v^*) + 
+				\frac{3}{2}
+				\sigma_v ^ 2 N_v ^ 2
+			\\
+			&=
+				\left(
+					(S_v - S_v ^*) + 
+					(I_v - I_v ^*)
+				\right)
+				\left(
+					-\gamma (S_v - S_v^*)
+					-\gamma (I_v - I_v^*)
+				\right) + 
+				\frac{3}{2}
+				\sigma_v ^ 2 N_v ^ 2
+				\\
+			&=
+				-\gamma 
+				\left(
+					(S_v - S_v ^*) + 
+					(I_v - I_v^*)
+				\right) ^2 + 
+				\frac{3}{2}
+				\sigma_v ^2 N_v^2.
+	\end{align*}
+	%
+	Then, we can bound the diffusion operator as follows
+	%
+	\begin{align*}
+		\mathcal{L}V 
+			&\leq 
+				-r 
+				\left(
+					(S_p - S_p ^*) + 
+					(L_p - L_p ^*) +
+					(I_p - I_p ^*)
+				\right) ^2 - 
+				\gamma 
+				\left(
+					(S_v - S_v) + 
+					(I_v - I_v)
+				\right) ^ 2
+			\\
+			&
+				-\frac{K_2 r}{I_p} (I_p - I_p ^*)
+				\left(
+					I_p - 
+					\frac{I_p^*}{L_p^*}
+				\right) + 
+				\frac{\beta_p K_1}{N_vL_p}
+				(L_p - L_p ^*)
+				\left(
+					S_pI_v - S_p ^* I_v^*
+					\frac{L_p}{L_p^*}
+				\right)
+			\\
+			&+
+				\frac{1}{2}
+				\left(
+					\sigma_p^2
+					(L_p ^* K_1 + I_p ^* K_2 + 2N_p ^ 2) + 
+					3 N_v ^ 2 
+					\sigma_v ^ 2
+				\right)
+	\end{align*}
+%
+	We need bound the term,
+	$
+		-\dfrac{K_2r}{I_p} (I_p-I_p^*)
+		\left(
+			I_p - \frac{I_p^*}{L_p^*}
+		\right)
+	$, 
+	then
+	\begin{align*}
+		-\frac{K_2r}{I_p}
+		(I_p - I_p ^*)
+		\left(
+			I_p - \frac{I_p^*}{L_p^*}
+		\right)
+			&=
+				-\frac{K_2 r}{I_p}
+				\left(
+					I_p^2 - 
+					\frac{I_pI_p^*}{L_p} - I_p^*I_p + 
+					\frac{{I_p ^*}^2}{L_p^*}
+				\right)
+			\\
+			&= 
+				-K_2r
+				\left(
+					I_p - 
+					\frac{I_p^*}{L_p^*} - 
+					I_p ^* +
+					\frac{{I_p^*}^2}{I_pL_p^*}
+				\right)
+			\\
+			&\leq
+				K_2 r 
+				\left(
+					\frac{I_p^*}{L_p^*} + I_p^*
+				\right).
+	\end{align*}
+%
+	Define $\alpha_1 := r\left(\frac{I_p^*}{L_p^*}+I_p^*\right)$, then
+	\begin{align*}
+		-\frac{K_2r}{I_p}
+		(I_p - I_p ^*)
+		\left(
+			I_p - \frac{I_p ^*}{L_p ^*}
+		\right)\leq K_2\alpha_1.
+	\end{align*}
+%
+	Now the term 
+	$
+	\frac{\beta_p K_1}{N_vL_p}
+	(L_p - L_p^*)
+	\left(
+		S_p I_v - S_p ^* I_v ^*
+		\frac{L_p}{L_p^*}
+	\right)
+	$ can be bound as
+	%
+	\begin{align*}
+		\frac{\beta_p K_1}{N_vL_p}
+		(L_p - L_p^*)
+		\left(
+			S_pI_v - S_p ^* I_v ^* 
+			\frac{L_p}{L_p^*}
+		\right)
+			&=
+				\frac{\beta_p K_1}{N_v L_p}
+					\left(
+						L_p S_p I_v - S_p ^* I_v ^* 
+						\frac{L_p ^2 }{L_p ^* } - L_p ^*S_pI_v + 
+						S_p ^* I_v ^* L_p
+					\right)
+				\\
+			&=		
+				\frac{\beta_p K_1}{N_v}
+				\left(S_p I_v - S_p ^* I_v ^* 
+					\frac{L_p}{L_p ^* } - 
+					\frac{L_p ^* }{L_p} S_pI_v + S_p^*I_v^*
+				\right)
+				\\
+			&\leq
+				\frac{\beta_p K_1}{N_v}
+				\left(
+					S_p I_v - S_p ^* I_v ^* 
+				\right).	
+	\end{align*}
+%
+	Since 
+	$ 
+		S_p,
+		S_p ^* 
+		\leq N_p
+	$ 
+	and 
+	$ 
+		I_v, I_v ^* \leq N_v
+	$, this imply that
+	\begin{align*}
+		\frac{\beta_p K_1}{N_vL_p}
+		(L_p - L_p ^* )
+		\left(
+			S_pI_v - S_p ^* I_v ^* 
+			\frac{L_p}{L_p ^* }
+		\right)
+			&\leq
+				2\frac{\beta_p K_1 N_p}{N_v}.
+	\end{align*}
+	%
+	Define $\alpha_2:=2\frac{\beta_p N_p}{N_v}$, then
+	%
+	\begin{align*}
+		\frac{\beta_p K_1}{N_vL_p}(L_p - L_p^*)
+		\left(
+			S_p I_v - S_p ^* I_v ^*
+			\frac{L_p}{L_p^*}
+		\right)
+			&\leq
+				K_1\alpha_2.
+	\end{align*}
+	%
+	Therefore we can bound the diffusion operator $\mathcal{L} V$ as follows
+	%
+	\begin{align*}
+		\mathcal{L}V 
+			&\leq 
+				-r 
+				\left(
+					(S_p - S_p ^*) + 
+					(L_p - L_p ^*) +
+					(I_p - I_p ^*)
+				\right)^2 - 
+				\gamma 
+				\left(
+					(S_v - S_v) + 
+					(I_v - I_v)
+				\right) ^ 2
+				\\
+			&+
+				K_2 \alpha_1 + 
+				K_1 \alpha_2 + 
+				\frac{1}{2}
+				\left(
+					\sigma_p ^2 
+					(
+						L_p ^* K_1 + 
+						I_p ^* K_2 + 
+						2 N_p ^ 2
+					) + 3 N_v ^ 2 
+					\sigma_v ^ 2
+				\right)
+				\\
+			&\leq 
+				-3r 
+				(S_p - S_p ^*) ^ 2 - 
+				3r 
+				(L_p - L_p ^*) ^2 - 
+				3r
+				(I_p - I_p ^*) ^ 2 - 
+				2 \gamma 
+				(S_v - S_v) ^ 2 - 
+				2 \gamma 
+				(I_v - I_v) ^ 2 
+				\\
+			&+
+				K_2 \alpha_1 + 
+				K_1 \alpha_2 + 
+				\frac{1}{2}
+				\left(
+					\sigma_p ^ 2
+					(
+						L_p ^* K_1 + 
+						I_p ^* K_2 + 
+						2N_p ^ 2
+					) 
+					+ 3 N_v ^ 2
+					\sigma_v ^ 2
+				\right).
+	\end{align*}
+	By the Young's inequality we obtain that,
+	\begin{align*}
+	\mathcal{L} V 
+		&\leq 
+			-r
+			\left(
+				1 - 
+				\frac{1}{2\rho_1} - 
+				2 \rho_1 
+			\right)
+			\left(
+				(S_p - S_p ^ *) ^ 2 + 
+				(L_p - L_p ^ *) ^ 2 +
+				(I_p - I_p ^ *) ^ 2
+			\right)
+			\\
+			&-
+				\gamma
+				\left(
+					1 - 2 
+					\rho_2
+				\right)
+				(S_v - S_v) ^ 2 - 
+				\gamma
+				\left(
+					1 - \frac{1}{4\rho_2}
+				\right)
+				(I_v - I_v) ^ 2
+				\\
+		&+
+			K_2 \alpha_1 + 
+			K_1 \alpha_2 + 
+			\frac{1}{2}
+			\left(
+				\sigma_p ^ 2
+				(
+					L_p ^* K_1 + 
+					I_p ^ *K_2 + 
+					2N_p ^ 2
+				) + 
+				3N_v ^ 2 
+				\sigma_v ^ 2
+			\right)
+		\\
+		&\leq 
+			-r
+			\left(
+				1 - 2 \rho_1 
+			\right)
+			\left(
+				(S_p - S_p ^ *) ^ 2 + 
+				(L_p - L_p ^ *) ^ 2 + 
+				(I_p - I_p ^ *) ^ 2
+			\right)
+		\\
+			&-
+				\gamma
+				\left( 
+					1 - 2 \rho_2
+				\right)
+				(S_v - S_v) ^ 2 - 
+				\gamma
+				\left( 
+					1 - \frac{1}{4\rho_2}\right)(I_v-I_v)^2\\
+			&+
+				K_2 \alpha_1 + K_1
+				\alpha_2 + 
+				\frac{1}{2}
+				\left( 
+					\sigma_p ^ 2
+					(
+						L_p ^* K_1 + 
+						I_p ^* K_2 + 
+						2 N_p ^ 2
+					) + 
+					3 N_v ^ 2
+					\sigma_v ^ 2
+					\right).
+	\end{align*}
+	Define $F(t)$ as
+	\begin{align*}
+		F(t)
+			&:=
+				-r 
+				\left(
+					1 - 2 \rho_1
+				\right)
+				\left(
+					(S_p - S_p ^* ) ^ 2 + 
+					(L_p - L_p ^* ) ^ 2 +
+					(I_p - I_p ^*) ^ 2
+				\right)
+		\\
+			&-
+				\gamma
+				\left(
+					1 - 2 \rho_2
+				\right)
+				(S_v - S_v) ^ 2 - 
+				\gamma
+				\left(
+					1 - 
+					\frac{1}{4\rho_2}
+				\right)
+				(I_v - I_v) ^ 2
+		\\
+			&+
+				K_2 \alpha_1 + K_1
+				\alpha_2 + 
+				\frac{1}{2}
+				\left(
+					\sigma_p ^ 2
+					( 
+						L_p ^* K_1 + 
+						I_p ^* K_2 + 
+						2N_p ^2
+					) + 
+					3N_v ^ 2
+					\sigma_v ^ 2
+				\right),
+	\end{align*}
+%
+	therefore
+	\begin{align*}
+		dV
+			&\leq
+				F(t)dt + 
+				\left(
+					\frac{
+						S_p
+						\left( 
+							\sigma_p L_p + 
+							\sigma_p I_p 
+						\right)
+					}{N_p}
+				\right)
+				\left(
+					 1 - 
+					 	\frac {N_p}{S_p} - 
+				\frac{\sigma_p S_p L_p}{N_p} - 
+				\frac{\sigma_p S_p I_p}{N_p}
+				\right)
+				 dB_p(t)
+				\\
+			&-
+				\frac{\sigma_v I_v \beta_p N_p dB_v(t)}{\gamma N_v}
+	\end{align*}
+	%
+	Integrating both sides from 0 to $t$ yields
+	\begin{align*}
+	 	V_3(t) - 
+	 	V_3(0)
+	 	\leq
+	 	&	
+	 		\int_{0} ^ {t}
+	 				F(s)ds +
+	 		\\ 
+	 		&
+	 		\int_{0} ^ {t}
+	 				\left(
+	 					\frac{
+	 						S_p 
+	 						\left(
+	 							\sigma_p L_p + 
+	 							\sigma_p I_p 
+	 						\right)
+	 					}{N_p}
+			 			\left(
+			 				1 - 
+			 				\frac{N_p}{S_p}
+			 			\right) - 
+			 				\frac{
+			 					\sigma_p S_p L_p
+			 				}{N_p}
+			 			\right.
+			% 	\\
+	 		-
+	 			\left.
+	 				\frac{
+	 					\sigma_p S_p I_p
+	 				}{N_p}
+	 			\right)  
+	 			dB_p(s)
+	 		\\
+	 		&
+	 			-
+	 			\int_{0} ^ {t}
+	 				\frac{\sigma_v I_v \beta_p N_p}{\gamma N_v} dB_v(s)
+	 \end{align*}
+	%
+	Let 
+	 \begin{align*}
+	 	M_1(t)&:=
+	 		\int_{0} ^ {t}
+	 			\left( 
+	 				\frac{
+	 					S_p 
+	 					\left(
+	 						\sigma_p L_p + 
+	 						\sigma_p I_p 
+	 					\right)
+	 				}{N_p}
+	 				\left(
+	 					1 - 
+	 					\frac{N_p}{S_p}
+	 				\right)
+	 				- 
+	 				\frac{
+	 					\sigma_p S_p L_p
+	 				}{N_p}
+	 				\frac{\sigma_p S_p I_p}{N_p}
+	 			\right) dB_p(s),
+	 			\\
+	 	M_2(t)&:=
+	 		\int_{0} ^ {t}
+	 			\frac{
+	 				\sigma_v I_v 
+	 				\beta_p N_p
+	 				 dB_v(s)
+	 			}{\gamma N_v}
+	\end{align*}
+%
+ 	and compute their quadratic variatiion, then
+	\begin{align*}
+	 	M_1(t)
+	 	&:=
+	 		\int_{0}^{t}
+	 			\left( 			
+	 		 	\frac{
+	 		 		S_p
+	 		 		\left(
+	 		 			\sigma_p L_p + 
+	 		 			\sigma_p I_p 
+	 		 		\right)
+	 		 	}{N_p}
+	 		 	\left(
+	 		 		1 - \frac{N_p}{S_p} 
+	 		 	\right) -
+	 		 	\frac{\sigma_p S_p L_p}{N_p}
+	 		 	\frac{\sigma_p S_p I_p}{N_p}
+	 			\right)
+	 		 dB_p(s)
+	 	\\
+	 	&\leq
+	 		\int_{0}^{t}
+	 		\left( 
+	 			\frac{
+	 				S_p
+	 				\left(
+	 					\sigma_p L_p +
+	 					\sigma_p I_p 
+	 				\right)
+	 			}{N_p}
+	 			\left( 
+	 				1 - 
+	 				\frac{N_p}{S_p} 
+	 			\right) 
+	 		\right) dB_p(s)
+	 	\\
+	 	&\leq
+	 		\int_{0}^{t}
+	 		\left( 
+	 			\frac{
+	 				\sigma_p S_p
+	 				\left(
+	 					L_p + I_p
+	 				\right)
+	 			}{N_p}
+	 			\left(
+	 				\frac{S_p-N_p}{S_p} 
+	 			\right) 
+	 		\right) 
+	 		dB_p(s)
+	 	\\
+	 	&\leq
+	 		\int_{0}^{t}
+	 		\left(
+	 		 	-
+	 		 	\frac{
+	 		 		\sigma_p S_p
+	 		 		\left(
+	 		 			 L_p + I_p 
+	 		 		\right)
+	 		 	}{N_p}
+	 		 	\left(
+	 		 		\frac{L_p + I_p}{S_p}
+	 		 	\right) 
+	 		 \right) dB_p(s)
+	 	\\
+	 	&\leq
+	 		\int_{0}^{t}
+	 		4\sigma_p N_p dB_p(s).
+	\end{align*}
+	%%
+	Similar for $M_2(t)$, we obtain
+	 \begin{align*}
+	 	M_2(t) &\leq
+	 		\int_{0}^{t}\sigma_v\beta_pN_p dB_v(s),
+	\end{align*}
+	which are local continuous bounded martingale and $M_1(0)=M_2(0)=0$ with 
+	quadratic variation finite. Then by Theorem 1.3.4 of [Mao's Book], we 
+	obtain
+	%
+	 \begin{equation*}
+	 	\lim
+	 	\limits_{t \to \infty}
+	 		\frac{M_1(t)}{t} = 0,
+	 		\qquad \mbox{a.s., and}
+	 \end{equation*}
+	%
+	\begin{equation*}
+	 	\lim 
+	 		\limits_{t\to \infty}
+	 		\frac{M_2(t)}{t} = 0,
+	 		\qquad \mbox{a.s.,}
+	\end{equation*}
+	%%
+	by the $\liminf$ and $\limsup$ properties we have 
+	\begin{align*}
+	 	\liminf
+	 	\limits_{t \to \infty} & 
+	 	\frac{1}{t}
+	 	\int_{0}^{t}
+	 		F(s)ds 
+	 	\geq 0 \qquad \mbox{a.s.}
+	 	\\
+	 	-\limsup_{t\to\infty}
+	 	&
+	 		\frac{1}{t}
+	 		\int_{0} ^ {t}
+	 			-F(s) ds \geq 
+	 			0\qquad \mbox{a.s.},
+	\end{align*}
+	%%
+	thus
+	\begin{align*}
+	 	\limsup_{t\to \infty}
+	 	&
+	 		\frac{1}{t}
+	 		\int_{0} ^ {t} - 
+	 		F(s)ds \leq 0
+	 		\qquad \mbox{a.s.}
+	 	\\
+	\end{align*}
+	%%
+	%%
+	Consequently,
+	\unsure{check term like $(S_v - S_v)^2$}
+	\begin{multline*}
+	 	%&
+	 	\limsup
+	 	\limits_{t \to 	\infty}
+	 	\frac{1}{t}
+	 	\int_{0}^{t}
+	 		(
+	 			r
+	 			\left(
+	 				1 - 2 \rho_1
+	 			\right)
+	 			\left(
+	 				(S_p - S_p ^*) ^ 2 + 
+	 				(L_p - L_p ^*) ^ 2 +
+	 				(I_p - I_p ^*) ^ 2
+	 			\right)
+	 	\\
+	 	%&
+	 	+
+	 		\gamma
+	 		\left(
+	 			1 - 2 \rho_2
+	 		\right)
+	 		(S_v - S_v) ^ 2 - 
+	 		\gamma
+	 		\left( 1 - 
+	 			\frac{1}{4\rho_2}
+	 		\right)(I_v-I_v)^2)
+	 		ds
+	 	\\
+	 	%&
+	 	\leq
+	 		K_2
+	 		\alpha_1 + 
+	 		K_1 \alpha_2 + 
+	 		\frac{1}{2}
+	 		\left(
+	 			\sigma_p^2(
+	 				L_p ^* K_1 + 
+	 				I_p ^ *K_2 + 
+	 				2N_p^2
+	 			) + 
+	 			3 N_v ^ 2
+	 			\sigma_v ^ 2
+	 		\right)
+	 	\qquad 
+	 	\mbox{a.s.}
+ 	\end{multline*}
+ \end{proof}
+\begin{remark}
+ 	The Theorem \ref{Upper_Bound} shows that, under some conditions, the 
+ 	distance between the solution 
+ 	$
+ 		X(t)=(S_p(t),L_p(t),I_p(t),S_v(t),I_v(t))^\top
+ 	$ and the fixed point 
+ 	$
+ 		X^*=(S_p^*,L_p^*,I_p^*,S_v^*,I_v^*)^\top
+ 	$ of system \eqref{system_1} has the following form:
+ 	\begin{equation*}
+  		\limsup_{t\to\infty}
+  		\frac{1}{t}
+  		\int_{0} ^ {t}
+  			\|X(s) - X ^*| ^ 2 
+  		ds
+  		\leq 
+  		C_1 + C_2
+  		\|\sigma\| ^ 2,
+  		\qquad a.s.,
+ 	\end{equation*}
+	%%
+ 	where $C_1, C_2$ are positive constants. Although the solution ofsystem 
+ 	\eqref{system_3} does not have stability as the deterministic system, we 
+ 	obtain oscillations around deterministic fixed point
+ 	[*] provided 
+ 	$
+ 		C_1 + C_2 
+ 		\|\sigma\|^2
+ 	$ is sufficiently small. In this context, we 
+ 	consider the disease to persist.
+\end{remark}
