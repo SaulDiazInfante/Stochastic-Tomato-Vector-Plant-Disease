@@ -40,31 +40,31 @@ From $\dot{S_p}$, we can obtain
 %
  and similar for the other equations we obtain
 \begin{equation*}
-	L^*_p = \frac{\beta_{{p}}S_p^* I_v^*}{N_{{v}} \left( b+r \right)},
-\end{equation*}
-%
-\begin{equation*}
-	I^*_p =\frac{b L^*_p}{r},
-\end{equation*}
-%
-\begin{equation*}
-	S^*_v =
-		\frac{
-			\left( 
-				1-\theta 
-			\right) 
-			\mu\, N_{p}
-		}{
-			\gamma\, N_{p} + I ^ * _ p
-			\beta_{v}
-		},
+	\begin{aligned}
+		L^*_p &= \frac{\beta_{{p}}S_p^* I_v^*}{N_{{v}} \left( b+r \right)},
+		\\
+		I^*_p &=\frac{b L^*_p}{r},
+		\\
+		S^*_v &=
+			\frac{
+				\left( 
+					1-\theta 
+				\right) 
+				\mu\, N_{p}
+			}{
+				\gamma\, N_{p} + I ^ * _ p
+				\beta_{v}
+			},
+	\end{aligned}
 \end{equation*}
 %
 Expresing the above coordinate in terms of $I_v$, we obtain
 %
 \improvement{rewrite as align}
+%
 \begin{equation*}
-	S^*_p = 
+	\begin{aligned}
+	S^*_p &= 
 		\frac{
 			r N_p N_v
 		}{
@@ -72,11 +72,8 @@ Expresing the above coordinate in terms of $I_v$, we obtain
 			I ^ *_v 
 			\beta_p
 		},
-\end{equation*}
-%
-%
-\begin{equation*}
-	L ^ *_p = 
+	\\
+	L ^ *_p &= 
 		\frac{
 			\beta_p rN_p I _ v ^ *
 		}{
@@ -88,11 +85,10 @@ Expresing the above coordinate in terms of $I_v$, we obtain
 				\beta_p
 			)
 		},
-\end{equation*}
 %
 %
-\begin{equation*}
-	I ^*_p =
+	\\
+	I ^*_p &=
 		\frac{
 			b \beta_p N_p I_v ^ *
 		}{
@@ -103,11 +99,8 @@ Expresing the above coordinate in terms of $I_v$, we obtain
 			 	I_v ^ * \beta_p
 			 )
 		},
-\end{equation*}
-%
-%
-\begin{equation*}
-	S ^ *_v =
+	\\
+	S ^ *_v &=
 		\frac{
 			 \left( 
 			 	1 - \theta 
@@ -119,38 +112,50 @@ Expresing the above coordinate in terms of $I_v$, we obtain
 			(r N_v + \beta_p I^*_v) + 
 			b \beta_p \beta_v I_v^*
 		},
+	\end{aligned}
 \end{equation*}
 %
 %
 We only need substituting the above expression into the differential equation 
 of $I_v$ and solve the following quadratic equation
 %
-\begin{equation*}
-	\begin{aligned}
-			&
-			-N_p( 
-				b \gamma^2 r I^*_v N_v + 
-				b \gamma^2 (I ^*_v)^2 \beta_p -
-				b \gamma \mu r \theta N_v - 
-				b \gamma \mu \theta I ^ *_v \beta_p + 
-				b \gamma (I^*_v)^2 \beta_p \beta_v + 
-				b \mu \theta I ^ *_v \beta_p ^ 2
+	\begin{multline}
+		-N_p [ 
+			b \gamma^2 r I^*_v N_v +
+			b \gamma^2 (I ^*_v)^2 \beta_p -
+			b \gamma \mu r \theta N_v - 
+			b \gamma \mu \theta I ^ *_v \beta_p + 
 			\\
-			&-
-				b \mu \theta I ^ *_v \beta_p \beta_v +
-				\gamma ^ 2 r ^ 2 I ^ *_v N_v +
-				\gamma ^ 2 r (I ^ *_v) ^ 2 \beta_p - 
-				\gamma\mu r^2 \theta N_v - 
-				\gamma\mu r \theta I^*_v 
-				\beta_p - b\mu I^*_v \beta_p^2) = 0
-	\end{aligned}
-\end{equation*}
+			b \gamma (I^*_v)^2 \beta_p \beta_v + 
+			b \mu \theta I ^ *_v \beta_p ^ 2
+			-
+			b \mu \theta I ^ *_v \beta_p \beta_v +
+			\gamma ^ 2 r ^ 2 I ^ *_v N_v +
+			\\
+			\gamma ^ 2 r (I ^ *_v) ^ 2 \beta_p - 
+			\gamma\mu r^2 \theta N_v - 
+			\gamma\mu r \theta I^*_v +
+			\beta_p - b\mu I^*_v \beta_p^2
+		] = 0 \ .
+	\end{multline}
 % 
 In sake of clearnes we define 
 \begin{align*}
-	a_1 &:= b \gamma^2 \beta_p+b \gamma \beta_p\beta_v+\gamma^2 r \beta_p,\\
-	a_2 &:=-b\gamma\mu\theta\beta_p+b\mu\theta\beta_p^2-b\mu\theta\beta_p\beta_v+\gamma^2 r^2 N_v-\gamma\mu r \theta\beta_p-b\mu\beta_p^2+\gamma^2 r N_v,\\
-	a_3 &:=-b\gamma\mu r\theta N_v-\gamma\mu r^2\theta N_v.
+	a_1 &:= 
+		b \gamma^2 \beta_p + 
+		b \gamma \beta_p \beta_v + 
+		\gamma^2 r \beta_p
+		,\\
+	a_2 &:=-b \gamma \mu \theta \beta_p + 
+		b \mu \theta \beta_p ^ 2 - 
+		b \mu \theta \beta_p \beta_v + 
+		\gamma^2 r^2 N_v - 
+		\gamma \mu r 
+		\theta \beta_p - 
+		b \mu \beta_p^ 2 + 
+		\gamma ^ 2 r N_v,
+	\\
+	a_3 &:=-b\gamma\mu r\theta N_v-\gamma\mu r^2\theta N_v, 
 \end{align*}
 %
 and rewrite the above eqution in this new notation as
@@ -160,13 +165,14 @@ and rewrite the above eqution in this new notation as
 	}_{:=a_1}
 	I_v^{*2} + 
 	\underbrace{()}_{:=a_2} I_v + 
-	\underbrace{()} 
+	\underbrace{()} \ .
 \end{equation}
 \todo{Fill according to each term}
 We need a positive solution, then according to discriminant, we obtain
 \begin{equation*}
 	\begin{aligned}
-		\Delta &= a_2^2-4a_1 a_3
+		\Delta &= 
+		a_2  ^ 2 -  4a_1 a_3
 		\\
 		&=
 			(
@@ -180,14 +186,17 @@ We need a positive solution, then according to discriminant, we obtain
 			) ^ 2
 		\\
 		& +  
-		4 ( 
+		%
+		4( 
 			b \gamma ^ 2 \beta_p + 
 			b \gamma \beta_p
 			\beta_v + 
 			\gamma^2 r \beta_p
 		)
+		%
 		(
-			b \gamma \mu r \theta N_v + 
+			b \gamma \mu r 
+			\theta N_v + 
 			\gamma \mu r ^ 2 \theta N_v
 		),			
 	\end{aligned}	
@@ -195,5 +204,9 @@ We need a positive solution, then according to discriminant, we obtain
 which ever is positive, then we have two different real solution, 
 since we require the positive, we deduce that
 \begin{equation*}
-	I^*_v = \frac{-a_2+\sqrt{a_2^2-4a_1 a_3}}{2a_1}.
+	I^{*}_{v} = 
+		\frac{
+			-a_2 + 
+			\sqrt{a_2^2 - 4a_1 a_3}}%
+		{2a_1}.
 \end{equation*}

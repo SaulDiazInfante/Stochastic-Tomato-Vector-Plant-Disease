@@ -24,9 +24,63 @@
 	\end{aligned} 
 \end{equation} 
 \todo{Make a table for description of  all parameters}
+\begin{table}
+	\begin{center}
+		\begin{tabular}{rll} 
+			\toprule
+			Par. & Unit & Description 
+			\\ 
+			\midrule
+				$\beta_p$ 
+				& 
+					\SI{}{vector \per day}
+				& 
+					infection rate of susceptible 
+					plants by infected vectors 
+			\\ 
+				$r_1$, $r_2$ 
+				& 
+					$\SI{}{day}^{-1}$ 
+				& 
+					replanting rate of latent and 
+					infected plants, respectively. 
+			\\
+				$b$ 
+				& 
+					$\SI{}{day}^{-1}$ 
+				& 
+					latency rate, plant latent 
+					becomes infectious 
+			\\
+				$\gamma$ 
+				& 
+					$\SI{}{day}^{-1}$ 
+				&  vector death rate 
+			\\
+				$\mu$ 
+				& \SI{}{plant \per day}
+				& vector migration rates from alternative plants to crop
+			\\
+				$\theta$ 
+				& 
+				& proportion vector migration rate
+			\\
+				$\beta_v$ 
+				& \SI{}{plant\per day}
+				& infection rate of susceptible vectors by an infected plant
+			\\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\caption{
+		Parameters description and values of
+		deterministic dynamics in ODE (*).
+	}
+	\label{tbl:deterministic_tbl}
+\end{table}
 \todo{Redact this conservation law to the entire system \eqref{system_1}.
 Write a introductory paragraph to Thm 1}
-
+%
 \begin{theorem}\label{theorem_1}
 	With the notation of ODE \eqref{system_1}, let
 	\begin{equation*}

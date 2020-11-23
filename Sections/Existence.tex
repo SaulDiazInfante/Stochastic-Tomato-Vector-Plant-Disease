@@ -38,7 +38,13 @@ the following result prove that this set is positive invariant.
 	linear and constans terms, this imply that they are locally Lipschitz. We 
 	know by [ref Mao], that for any initial condition
 	$
-		(S_p(0), L_p(0), I_p(0), S_v (0), I_v(0))^{\top}\in \mathbf{E}
+		(
+			S_p(0),
+			L_p(0),
+			I_p(0),
+			S_v (0),
+			I_v(0)
+		)^{\top} \in \mathbf{E}
 	$ 
 	there is a unique maximal local solution 
 	$(S_p(t), L_p(t), I_p(t), S_v(t), I_v(t))^{\top}$ 
@@ -96,8 +102,10 @@ the following result prove that this set is positive invariant.
 	\end{equation}
 	 a.s. for all $t\geq 0$. Thus, 
 	we  show that $\tau_\infty=\infty$ a.s. To this end,  we proced
-	by contradiction. Suppose that the above statement is false for a given time $t$, then there is 
-	a pair of constants $T>0$ and $\epsilon  \in (0,1)$  such that some component from $L_p,I_p,I_v$, or $L_p$, get-outs from its corresponding 
+	by contradiction. Suppose that the above statement is false for a given 
+	time $t$, then there is 
+	a pair of constants $T>0$ and $\epsilon  \in (0,1)$  such that some 
+	component from $L_p,I_p,I_v$, or $L_p$, get-outs from its corresponding 
 	interval
 	$$
 	\left(
@@ -249,8 +257,8 @@ the following result prove that this set is positive invariant.
 		Set 
 	$
 		\Omega_k = \{\omega : \tau_k\leq T\}
-	$ for $k\geq k_1$, note that by relation in equation 
-	\eqref{Positive1}, 
+	$ for $k\geq k_1$, note that by relation in 
+	\autoref{Positive1}, 
 	$
 		\P(\Omega_k) >  \epsilon
 	$. For every 
@@ -272,10 +280,10 @@ the following result prove that this set is positive invariant.
 			\\
 			&\geq 
 				k + 
-				\frac{1}{N_p - 
-				\frac{1}{k}}
+				\frac{1}{
+					N_p - \frac{1}{k}}
 			\\
-			&\geq k.
+			& \geq k.
 	\end{align*}
 %	
 	It follows from equation \eqref{Positive3}, that
@@ -297,6 +305,5 @@ the following result prove that this set is positive invariant.
 	\end{equation*}
 %
 	Therfore we  have $\tau_\infty=\infty$ a.s., and the proof is 
-	complete.
-	\qed
+	complete. \qed
 \end{proof}
