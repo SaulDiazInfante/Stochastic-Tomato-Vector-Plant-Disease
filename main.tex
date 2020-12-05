@@ -25,6 +25,7 @@
 \usepackage{color}
 \usepackage{booktabs}
 \usepackage{siunitx}
+\usepackage[section]{placeins}
 \definecolor{darkblue}{rgb}{0,0.1,0.5}
 \hypersetup{colorlinks,
             linkcolor=darkblue,
@@ -72,25 +73,40 @@
 	}
 	\author{%
 		Gabriel A. Salcedo-Varela  \and 
-		\\
-		Sa\'ul Diaz-Infante 
+		Saul Diaz-Infante\thanks{Corresponding author.}
 	}
 	\institute{
 		Gabriel Salcedo-Varela \at
-		Departamento de Matem\'aticas, 
 		Universidad de Sonora,
+		Departamento de Matem\'aticas, 
+		Boulevard Luis Encinas y Rosales s/n Col. 
+		Centro, Hermosillo, Sonora, CP 83000
 		Hermosillo, Sonora 
 		\\
-        Tel.: +123-45-678910
+        Tel.: +521 (662)-259-2155, ext. 2394
         \\
-        Fax: +123-45-678910
+        Fax: +521 (662) 259-2219
         \\
         \email{correo@institucional}           
         \and Saul Diaz Infante Velasco 
-        second address
+        \at
+        CONACYT-Universidad de Soonora,
+		Departamento de Matem\'aticas, 
+		Boulevard Luis Encinas y Rosales s/n Col. 
+		Centro, Hermosillo, Sonora, CP 83000
+		Hermosillo, Sonora 
+		\\
+        Tel.: +521 (662)-259-2155
+        \\
+        Fax: +521 (662) 259-2219
+        \\
+        \email{saul.diazinfante@unison.mx}
 	}
 	\date{Received: \today / Accepted: date}
+	\titlerunning{SDE-vector plant}
+	\authorrunning{G. Salcedo-Varela, S. Diaz-Infante}
 	\maketitle
+	\keywords{Keywords}
 	%
 	\begin{abstract}
 		BACKGROUND
@@ -122,12 +138,12 @@
 		\input{Sections/Upper_Bound_Persistence}
 		\input{Sections/Lower_Bound_Persistence}
 	\section{Numerical Results}
-		%\label{sec:numerics}
+		\label{sec:numerics}
+		\input{Sections/Numerical_Results}
 	\section{Conclusion}
-		%\label{sec:conclusion}
-	\input{RerencesGuide}
+		\label{sec:conclusion}
+	% \input{RerencesGuide}
 	\appendix
 	\section{Background}
 	\info{add a tex source with the appendix files}
 \end{document}
-
