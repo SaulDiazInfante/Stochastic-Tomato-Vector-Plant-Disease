@@ -1,29 +1,28 @@
 %!TEX root = ../main.tex
-\section{Existence of unique positive solution}
-Thereom *.* of [Mao Book] assures ths existence of unique solution of \eqref{system_3} 
-in a compact interval. Since we study asymptotic behaviour, we have to assure the existence of 
-unique positive invariant solution to SDE (*). To this end, let $\R^n_+$ the first octant of $\R ^ n$ and consider  
+Thereom *.* of [Mao Book] assures ths existence of unique solution of 
+\eqref{system_3} in a compact interval. Since we study asymptotic behaviour, 
+we have to assure the existence of unique-globally-positive invariant solution 
+of SDE (*). To this end, let $\R^n_+$ the first octant of $\R ^ n$ and 
+consider  
 $$	{
 	\mathbf{E}:= 
 		\left \{ 
 			(S_p, L_p, I_p, S_v, I_v)^{\top} \in \R^5_+: \quad
-			\leq S_p + L_p + I_p \geq N_p, \quad
+			0\leq S_p + L_p + I_p \leq N_p, \quad
 			S_v + I_v \leq \frac{\mu}{\gamma}
 		\right \},
 	}
 $$
 the following result prove that this set is positive invariant.
-
+%
 \begin{theorem}\label{existence-unique}
 	For any initial values 
 	$
-		(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0)) 
+		(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0))^{\top}
 		\in \mathbf{E}
 	$, 
-	 exists unique invariant global positive solution to SDE \eqref{system_3}
-	$
-	 	(S_p(t), L_p(t), I_p(t) ,S_v(t), I_v(t)) ^{\top}
-	$ with probability one, that is,
+	exists unique a.s. invariant global positive solution to SDE 
+	\eqref{system_3} in $\mathbf{E}$, that is,
 	\begin{equation*}
 		\probX{
 			(L_p(t), I_p(t), S_v(t), I_v(t)) 
@@ -33,6 +32,278 @@ the following result prove that this set is positive invariant.
 		} = 1.
 	\end{equation*}
 \end{theorem}
+%
 \begin{proof}
+		Since the right hand side of system \eqref{system_3} are quadratic, 
+	linear and constans terms, this imply that they are locally Lipschitz. We 
+	know by [ref Mao], that for any initial condition
+	$
+		(
+			S_p(0),
+			L_p(0),
+			I_p(0),
+			S_v (0),
+			I_v(0)
+		)^{\top} \in \mathbf{E}
+	$ 
+	there is a unique maximal local solution 
+	$(S_p(t), L_p(t), I_p(t), S_v(t), I_v(t))^{\top}$ 
+	at $t\in [0,\tau_e)$, where 
+	$\tau_e$ is the explosion time. Let $k_0>0$ be sufficiently large, and 
+	define the stopping time
+	\begin{multline}
+		\label{eqn:invariatn_set}
+		\tau_k = %
+			\inf
+			\left\{
+				t \in [0,\tau_e)
+				: 
+				L_p(t) \notin 
+					\left(
+						\frac{1}{k_0},
+					 N_p - \frac{1}{k_0}
+					\right)		
+			%\right.
+			%\\
+			%\left.
+			 \bigcup 
+				I_p(t)
+				\notin
+				\left(
+					\frac{1}{k_0}, 
+					N_p-\frac{1}{k_0}
+				\right)
+			\right.
+			\\
+			\bigcup
+			\left.		
+					I_v(t) 
+					\notin
+					\left(
+						\frac{1}{k_0},
+						N_v - \frac{1}{k_0}
+					\right)
+			\right\},
+		\end{multline}
 %	
+	\improvement{Give an argument}
+	We know that $\tau_k \nearrow \tau_\infty$. 
+	In other words, $\tau_\infty = \infty$ a.s. 
+	implies
+	\begin{equation}
+		\label{eqn:invariance_prop}
+		(
+			S_p(t),
+			L_p(t),
+			I_p(t),
+			S_v(t),
+			I_v(t)
+		)^{\top}\in \mathbf{E}
+	\end{equation}
+	 a.s. for all $t\geq 0$. Thus, 
+	we  show that $\tau_\infty=\infty$ a.s. To this end,  we proced
+	by contradiction. Suppose that the above statement is false for a given 
+	time $t$, then there is 
+	a pair of constants $T>0$ and $\epsilon  \in (0,1)$  such that some 
+	component from $L_p,I_p,I_v$, or $L_p$, get-outs from its corresponding 
+	interval
+	$$
+	\left(
+		\frac{1}{k_0}, 
+	N_{\bullet} - \frac{1}{k_0}
+	\right), 
+	$$
+	that is, %
+	$
+		\P[\tau_\infty\leq T]>\epsilon 
+	$. 
+	Hence, there is an integer $k_1\geq k_0$ such that
+%	
+	\begin{equation}\label{Positive1}
+		\P[\tau_k\leq T]>\epsilon,
+		\quad \forall k\geq k_1.
+	\end{equation}
+	
+		Define a function $V_p:(0,N_p)\rightarrow \mathbb{R}_+$ by
+%	
+	\begin{equation*}
+		V_p(x) := 
+			\frac{1}{x} + 
+			\frac{1}{N_p-x}.
+	\end{equation*}
+%	
+	According to the inifinitesimal operation $\mathcal{L}$
+	see \autoref{app:} APPENDIX
+	\improvement{Write auxiliar results in a fucking appendix}
+	By diffusion operator, we have, for any $t\in [0,T]$ and $k\geq k_1$ 
+%
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			=&	
+				\left[
+					-\frac{1}{L_p^2} + 
+					\frac{1}{(N_p - L_p) ^ 2}
+				\right]
+				\left[
+					\beta_p S_p 
+					\frac{I_v}{N_v} - 
+					(b + r_1) L_p\right]
+				\\
+			&+
+				\frac{1}{2}
+				\left[
+					\frac{2}{L_p^3} + 
+					\frac{2}{(N_p - L_p)^3}
+				\right]
+				\sigma_p ^ 2
+				\frac{L_p^2 S_p^2}{N_p^2}.
+			\\
+	\end{align*}
+%	
+	Expanding each term, we have
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&=	
+				-\beta_p \frac{S_p I_v}{L_p^2 N_v} + 
+				\beta_p \frac{S_p I_v}{(N_p -L_p) ^ 2 N_v} + 
+				\frac{(b + r_1)}{L_p} - 
+				\frac{(b+r_1)L_p}{(N_p-L_p)^2}
+				\\
+			&+
+				\left[
+					\frac{1}{L_p^3} + 
+					\frac{1}{(N_p-L_p)^3}
+				\right]
+				\sigma_p ^ 2
+				\frac{L_p^2 S_p^2}{N_p^2}.
+				\\
+	\end{align*}
+%	
+	Droping negative terms, we bound the above relation by
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&\leq	
+				\beta_p 
+				\frac{S_p}{(N_p - L_p) ^ 2} + 
+				\frac{(b + r_1)}{L_p} + 
+				\left[
+					\frac{1}{L_p^3} + 
+					\frac{1}{(N_p-L_p)^3}
+				\right]
+				\sigma_p ^ 2
+				\frac{L_p ^ 2 S_p ^ 2}{N_p ^ 2}.
+	\end{align*}
+	Moreover we see that $S_p\leq N_p-L_p=S_p+I_p$, thus
+	\info{Rewview this steap}
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&\le q		
+				\frac{\beta_p}{N_p -L_p} + 
+				\frac{(b + r_1)}{L_p} + 
+				\sigma_p^2
+				\left[
+					\frac{1}{L_p} + 
+					\frac{L_p^2}{N_p^2(N_p-L_p)}
+				\right].
+	\end{align*}
+	And this implies that
+	\info{explain why}
+	\begin{align*}
+		\mathcal{L}[V_p(L_p)] 
+			&\leq		
+			\frac{b+r_1}{L_p} + 
+			\frac{\beta_p}{N_p -L_p} +  
+			\sigma_p^2
+			\left[
+				\frac{1}{L_p} + 
+				\frac{1}{N_p-L_p}
+			\right].
+	\end{align*}
+	%
+	Now define $C := (b+r_1) \vee \beta_p +\sigma_p^2$, we obtain the 
+	following inequality
+	\begin{align}\label{Positive2}
+		\mathcal{L}[V(L_p)] 
+			&\leq		
+				C V_p(L_p).
+	\end{align}
+%
+	
+		By It\^{o}'s formula and applying expectation, we have, for any 
+	$t \in [0,T]$ and $k\geq k_1$
+	\begin{align*}
+		\E V(L_p(t\wedge\tau_k)) &= 
+			V(L_p(0)) + 
+			\E 
+				\int_{0}^{t\wedge\tau_k} \mathcal{L}[V(L_p(s))]
+			ds.
+	\end{align*}
+	%
+	By equation \eqref{Positive2} and Fubini's Theorem, we have
+	\begin{align*}
+		\E V(L_p(t\wedge\tau_k)) 
+			&\leq 
+				V(L_p(0)) + 
+				C
+				\int_{0}^{t}
+					\E V(L_p(s\wedge\tau_k))
+				ds.
+	\end{align*}
+	Applying the Gronwall inequality yields that	
+	\begin{align}\label{Positive3}
+		\E V(L_p(t\wedge\tau_k))&\leq V(L_p(0))e^{CT}.
+	\end{align}
+
+		Set 
+	$
+		\Omega_k = \{\omega : \tau_k\leq T\}
+	$ for $k\geq k_1$, note that by relation in 
+	\autoref{Positive1}, 
+	$
+		\P(\Omega_k) >  \epsilon
+	$. For every 
+	$
+		\omega \in \Omega_k
+	$, we have 
+	$
+		L_p(t,\omega) \in 
+		\left(
+			\frac{1}{k_0}, N_p - 
+			\frac{1}{k_0}
+		\right) ^ {\complement}
+	$, and hence
+	\begin{align*}
+		V_p(L_p(t,\omega))
+			&=
+				\frac{1}{L_p} + 
+				\frac{1}{N_p-L_p}
+			\\
+			&\geq 
+				k + 
+				\frac{1}{
+					N_p - \frac{1}{k}}
+			\\
+			& \geq k.
+	\end{align*}
+%	
+	It follows from equation \eqref{Positive3}, that
+	\begin{equation*}
+		V_p(L_p(0)) e^{CT}
+			\geq 
+			\E 
+			\left[
+				\1{\Omega_k} (\omega)
+				V_p(L_p(\tau_k,\omega))
+			\right]
+			\geq k
+			\prob (\Omega_k)\geq \epsilon k.
+	\end{equation*}
+%
+	Thus, letting $k\rightarrow \infty$ leads to the contradiction
+	\begin{equation*}
+		\infty>V_p(L_p(0))e^{CT}\geq \infty.	
+	\end{equation*}
+%
+	Therfore we  have $\tau_\infty=\infty$ a.s., and the proof is 
+	complete. \qed
 \end{proof}

@@ -1,185 +1,456 @@
 %!TEX root = ../main.tex
 
-\section{Extinction of the disease}
+	In this section we will study when the disease can be extinguished, for 
+this we will give the necessary conditions so that this phenomenon can occur 
+through two different cases. The first case will be when due to the intensity 
+of the noise.The theorem presented below shows that under conditions on the parameters we can make the disease tend to become extinct.
+\begin{theorem}\label{theorem_noise}[Extinction by noise]
+	If
+	\begin{align*}
+		\frac{\beta_p ^ 2}{2\sigma_L ^ 2} + 
+		\frac{r_2^2}{2\sigma_I^2} + 
+		2 \beta_p - r_1 < 0,
+		\qquad
+		\frac{\beta_v^2}{2\sigma_v^2} + 
+		\beta_v - \gamma + \theta \mu < 0,
+	\end{align*}		
+	 then the disease will exponentially extinguish with probability one. That 
+	 is, for any initial condition 
+	 $(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0)) ^ \top \in \mathbb{R}_+^5$
+	\begin{equation*}
+		\limsup_{t\infty \to \infty}
+		\frac{1}{t}
+		\ln(L_p + I_p) < 0 \text{ and }
+		\limsup_{t\infty \to \infty}
+		\frac{1}{t}\ln(I_v)< 0\,\,\mbox{a.s.}
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	The main idea is apply the It\^{o} formula to a conveniently function and 
+	deduce conditions. Let 
+	$
+		V(S_p, L_p, I_p) = \ln(L_p + I_p)
+	$, then the It\^{o} formula gives
+	\begin{align*}
+		d \ln(L_p+I_p) 
+			=&
+				\left(
+					\frac{1}{L_p + I_p}
+				\right)
+				\left(
+					\frac{\beta_p}{N_v^\infty} 
+					S_p I_v - (b + r_1) L_p
+					-\frac{1}{2}
+					\sigma_L^2 \frac{L_p^2}{(L_p+I_p)^2}
+				\right)dt
+			\\
+			&-
+				\sigma_L \frac{L_p}{L_p+I_p}dB_p(t)\\
+			&\leq 
+				\left(
+					\frac{1}{L_p+I_p}
+				\right)
+				\left(
+					\beta_p S_p - (b + r_1) -
+					\frac{1}{2}
+					\sigma_L^2
+					\frac{L_p^2}{(L_p+I_p)^2}
+				\right)dt
+			\\
+			&-
+				\sigma_L \frac{L_p}{L_p + I_p} dB_p(t).
+			\\
+	\end{align*}
+	Let $x:=\frac{L_p}{L_p + I_p}$, then
+		\begin{align*}
+		d \ln(L_p + I_p) 
+			&\leq 
+				\left(
+					\beta_p 
+					\frac{S_p}{L_p + I_p} - 
+					(b + r_1) - 
+					\frac{1}{2}
+					\sigma_L ^ 2 x^2
+				\right)dt - \sigma_L x dB_p(t)
+			\\
+			&\leq
+				\left(\beta_p
+					\frac{N_p}{L_p + I_p} - (b+r_1) - 
+					\frac{1}{2} 
+					\sigma_L^2 x^2
+				\right) dt - 
+				\sigma_L xdB_p(t)
+			\\
+			&\leq
+				\left(
+					\beta_p x + 2\beta_p - 
+					(b + r_1) - 
+					\frac{1}{2}
+					\sigma_L ^ 2 x^2
+				\right) dt - 
+				\sigma_L xdB_p(t)
+			\\
+			&=
+				\left(
+					-\frac{1}{2}
+					\sigma_L ^ 2 x ^ 2 + 
+					\beta_p x + 2 \beta_p - 
+					(b + r_1)
+				\right) dt -\sigma_L x 
+				dB_p(t).			
+	\end{align*}
+	Hence,
+	\begin{align*}
+		\ln(L_p+I_p)
+			&\leq
+				-\frac{\sigma_L ^ 2}{2}
+				\int_{0} ^ {t}
+					\left(
+						\left(
+							x - 
+							\frac{\beta_p}{\sigma_L ^ 2}
+						\right) ^ 2 + 
+						\frac{\beta_p ^ 2}{2 \sigma_L ^ 2} + 
+						2 \beta_p - (b + r_1)
+					\right) du
+				\\
+			&-
+				\int_{0} ^ {t}
+					\sigma_L x dB_p(u) + 
+					\ln(L_p(0) + I_p(0)),
+	\end{align*}
+	which implies,
+	\begin{equation}
+	\label{eq4.1}
+		\begin{aligned}
+			\frac{1}{t}\ln(L_p+I_p) 
+				&\leq
+					-\frac{\sigma_L^2}{2t}
+					\int_{0}^{t}
+					\left(
+						x - 
+						\frac{\beta_p}{\sigma_L^2}
+					\right) ^ 2 du + 
+					\frac{\beta_p^2}{2\sigma_L^2} - 
+					(b + r_1) + 2\beta_p
+				\\
+				&-
+					\frac{1}{t}
+					\int_{0}^{t}
+					\sigma_L x dB_p(u) + 
+					\frac{1}{t} \ln(S_p(0)+L_p(0)+I_p(0)),
+		\end{aligned}
+	\end{equation}
+	let 
+	$$
+	M_t :=
+		\frac{1}{t}
+		\int_{0}^{t}
+			\sigma_L x dB_p(t) + 
+			\frac{1}{t} \ln(L_p(0)+I_p(0)) .
+	$$ 
+	Since the integral in the term $M_t$ is a martingale, the strong law of
+	large numbers for martingales \cite{Mao}, implies that
+	\begin{equation*}
+		\lim
+		\limits_{t \to \infty} M_t = 0\,\,
+		\mbox{a.s.}
+	\end{equation*}
+	Thus, from relation (\ref{eq4.1}) we obtain
+	\begin{align}
+		\label{eq4.2}
+		\limsup_{t\infty \to \infty}
+		\frac{1}{t}
+		\ln(L_p + I_p) < 
+			\frac{\beta_p^2}{2\sigma_L^2} +
+			2\beta_p - (b + r_1)
+	\end{align}
+	A similar argument also shows that
+	\begin{align}\label{eq4.3}
+		\limsup_{t\infty \to \infty}
+		\frac{1}{t}
+		\ln(L_p + I_p) < 
+		\frac{r_2 ^ 2}{2 \sigma_I ^ 2} + b
+	\end{align}
+%
+	Through the equations (\ref{eq4.2}) and (\ref{eq4.3}), we obtain
+%	
+	\begin{align*}
+		\limsup_{t\infty \to \infty}
+		\frac{1}{t}
+		\ln(L_p + I_p) 
+			< 
+			\frac{\beta_p^2}{2\sigma_L^2} + 
+			\frac{r_2^2}{2 \sigma_I ^ 2} +	
+			2\beta_p - r_1
+	\end{align*}
+	and 
+	\begin{align*}
+		\limsup_{t\infty \to \infty}
+		\frac{1}{t}
+		\ln(I_v) 
+			< 
+			\frac{\beta_v^2}{2\sigma_v^2} 
+			+ 
+			\beta_v - \gamma + \theta \mu
+	\end{align*}
+\end{proof}
+%
+\begin{remark}
+	Theorem \ref{theorem_noise} shows that, under certain conditions on the 
+	parameters can cause disease exponentially towards zero whenever the noise 
+	intensity is large enough.
+\end{remark}
 
+	The next case of extinction of the disease is through the basic 
+reproductive number. For the deterministic case, defining the basic 
+reproductive number is done using the next generation matrix [Van der drish], 
+but in the stochastic case it is not possible to give such a definition.
 
-Our analysis needs the following hypotesis.
+	To define the stochastic reproductive number we will use the techniques 
+used in [Agwar], in which, by means of algebraic procedures, this parameter 
+can be defined. As our deterministic base structure this paramenters 
+summarizes the behavior of extinction and persistence according to a threshold.
+
+	Our analysis needs the following function and conditions.
 \begin{enumerate}[(H-1)]
 	\item
-	 	According to SDE \eqref{system_3}, replatin rates satisfies 
-	  	$r_1=r_2 = r$. 
+	According to SDE \eqref{system_3}, replatin rates satisfies 
+	$r=r_1+r_2$. 
 	\item
-		The replanting noise intesities are equal
-	  	$\sigma_L = \sigma_I = \sigma$.
+	The replanting noise intesities are equal
+	$\sigma_L = \sigma_I = \sigma_p$.
 \end{enumerate}
-%
-\todo{Define here the infinitesimal operator $\mathcal{L}$.}
-
-
-We define the repoductive nomber of our stochastic model in SDE (*) by
-
-\begin{equation}
-	\label{eq5}
-	\mathcal{R}_0^s :=\frac{\beta_p\beta_v}{\gamma r}.
+Given a function 
+$
+	V\in C^{2,1}(\R^n\times\R_{+};\R)
+$, 
+define an operator 
+$
+	LV:\R ^ n \times \R_{+}\to\R
+$ by
+\begin{equation}\label{InfiOpera}
+	\mathcal{L}[V(x,t)] = 
+		V_t(x,t) + 
+		V_x(x,t) f(x,t) + 
+		\frac{1}{2} 
+		\trace(g^T(x,t)V_{xx}(x,t)g(x,t))
 \end{equation}
-As our deterministic base structure this paramenters summarizes the behavior of 
-extinction and persistence according with a threshold.
-
-
-
-\begin{theorem}\label{theorem_2}
-	Let $(S_p(t),L_p(t),I_p(t),I_v(t))$ be the solution of 
-	(\ref{system_3}) 
-	%\todo{fix the reference, note that Eq(3) is a deterministic structure}
-	with initial condition $(S_p(0),L_p(0),I_p(0),I_v(0))\in \mathbf{E}$.
-	If $0 \leq \mathcal{R}_0 ^ s < 1$  then, infected individuals 
-	in SDE (*) tends to zero exponentially a.s, that is,
-	the disease will extinguishes with probability one.
-\end{theorem}
-
-\begin{proof}
-	The proof consitst verify the hypotheses of Khasminskii Theorem [*] for the Lyapunov 
-	function 	
-	\begin{equation}
-		\label{eq4}
-		V(S_p,L_p,I_p,S_v,I_v) = 
-			\left (
-				S_p - S_p^0 - S_p^0
-				\ln
+%
+which is called the diffusion operator of the It\^{o} process associated with 
+the $C^{2,1}$ function $V$. With this diffusion operator, the It\^{o} formula 
+can be written as
+\begin{equation}\label{Itoformula}
+	dV(x(t),t) = 
+		\mathcal{L}
+			V(x(t),t)dt + 
+			V_x(x(t), t) 
+			g(x(t),t) dB(t) \qquad a.s.
+\end{equation}
+We define the repoductive nomber of our stochastic model in 
+SDE (\ref{system_3}) by
+\begin{equation}\label{eq5}
+	\mathcal{R}_0 ^ s =
+		\frac{\beta_p \beta_v}{\gamma r}
+\end{equation}
+%
+\improvement{rename labels}
+\begin{theorem}
+	\label{theorem_2}
+	Let $(S_p(t),L_p(t),I_p(t),I_v(t))$ 
+	be the solution of SDE \eqref{system_3} with initial values 
+	$
+		(S_p(0),L_p(0),I_p(0),I_v(0)) \in (0,N_p) 
+		\times(0, N_p) \times(0,N_p)
+		\\
+		\times(0, N_v)
+	$. 
+	If $0\leq \mathcal{R}^s_0<1$, 
+	then the following conditions holds
+	\begin{align*}
+		\lim
+		\limits_{t\to \infty}
+		\frac{1}{t}
+		\mathbb{E}
+		\int_{0}^{t}
+			\left[
+				r
+				[\mathcal{R}^s_0 - 1]
+				I_p - r S_p
 				\left(
-					\frac{S_p}{S_p^0}
-				\right)
+					1 - \frac{S^0_p}{S_p}
+				\right) ^ 2 - 
+				r L_p - 
+				\frac{\beta_p\beta_v}{\gamma} 
+				I_v I_p
+			\right] dr 
+			\leq \frac{1}{2} \sigma ^ 2 N_p,\, a.s.,
+	\end{align*}
+	namely, the infected individual tends to zero exponentially a.s, i.e the 
+	disease will die out with probability one.
+\end{theorem}
+%
+\begin{proof}
+		The proof consitst verify the hypotheses of Khasminskii Theorem [*] 
+	for  the Lyapunov function
+	\begin{align*}
+		V(S_p,L_p,I_p,I_v) &= 
+			\left(
+				S_p - S_p^0 -  S_p^0 
+				\ln 
+				\frac{S_p}{S_p^0}
 			\right) + 
 			L_p + 
-			I_p +
-			\frac{\beta_p N_p}{\gamma N_v} I_v .
-	\end{equation}
-
-	Let $f$, $g$ respectively be the dirft and difussion of SDE(*).
-	Applyng the inifinitesimal opreator $\mathcal{L}$ we have
-	\todo{In the following step apply the operator $\mathcal{L}$}
+			I_p + 
+			\frac{\beta_p N_p}{\gamma N^\infty_v}I_v,
+	\end{align*}
+	Let $f$, 
+	$g$ respectively be the dirft and difussion of SDE (\ref{Positive3}).	
+	Applyng the diffusion operator $\mathcal{L}$ we have
 	\begin{align*}
 		V_x f &=
 			\left(
-				1 - \frac{S_p^0}{S_p}
+				1-\frac{S_p^0}{S_p}
 			\right)
 			\left(
-				-\frac{\beta_p}{N^\infty_v}
-				S_pI_v + rN_p - r S_p
+				-\frac{\beta_p}{N ^ \infty_v} S_pI_v + 
+				r N_p - r S_p
 			\right) + 
 			\frac{\beta_p}{N^\infty_v} S_p I_v - 
 			(b + r) L_p
 			\\
-			& +
+			  &+
 				b L_p - rI_p + 
-				\frac{ \beta_p N_p}{\gamma N ^ \infty_v}
+				\frac{\beta_p N_p}{\gamma N ^ \infty_v}
 				\left(
 					\frac{\beta_v N_v}{N_p}I_p - 
-					\frac{\beta_v}{N_v ^ \infty} I_vI_p - 
-					\gamma I_v\right
-				)
+					\frac{\beta_v}{N_v^\infty} I_vI_p - 
+					\gamma I_v
+				\right)
 			\\
-			& =
-				-rS_p 
-				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 -
-				\frac{\beta_p}{N_v ^ \infty} S_pI_v +
-				\frac{\beta_p}{N_v ^ \infty} I_vS_p ^ 0 + 
-				\frac{\beta_p}{N_v ^ \infty} S_pI_v -
-				r(L_p + I_p)
+			  &=
+			  	-rS_p 
+			  	\left(
+			  		1 - \frac{S_p^0}{S_p}
+			  	\right) ^2 -
+			  	\frac{\beta_p}{N_v ^ \infty} S_pI_v +
+			  	\frac{\beta_p}{N_v ^ \infty} I_vS_p ^ 0 + 
+			  	\frac{\beta_p}{N_v ^ \infty} S_pI_v - 
+			  	r(L_p + I_p)
 			\\
-			& +
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty _ v}
+			  &+
+			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v}
 			  	\left(
 			  		\frac{\beta_v N_v}{N_p}I_p - 
-			  		\frac{\beta_v}{N_v ^ \infty} I_v I_p - 
+			  		\frac{\beta_v}{N_v^\infty} I_vI_p -
 			  		\gamma I_v
 			  	\right)
 			\\
-			&=
-				-r S_p
-				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 + 
-				\frac{\beta_p}{N_v ^ \infty} I_v S_p ^ 0 - 
-				r (L_p + I_p) + 
-				\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-				\frac{\beta_v N_v}{N_p}I_p
+			  &=
+			  	-r S_p 
+			  	\left(
+			  		1 - 
+			  		\frac{S_p^0}{S_p}
+			  	\right) ^ 2 + 
+			  	\frac{\beta_p}{N_v^\infty} I_v S_p ^ 0 - 
+			  	r (L_p + I_p) + 
+			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v}
+			  	\frac{\beta_v N_v}{N_p}I_p
 			\\
 			  &-	
 			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-			  	\frac{\beta_v}{N_v ^ \infty} I_v I_p -
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v} \gamma I_v.
+			  	\frac{\beta_v}{N_v ^ \infty} I_vI_p - 
+			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v} \gamma I_v
+			\\
 	\end{align*}
-		Then,
-	
+	Then,
 	\begin{align*}
 		V_x f &=
-				-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2-\left[\frac{\beta_p N_p}{\gamma N^\infty_v}\gamma-\frac{\beta_p N_p}{N_v^\infty}\right]I_v+\left[\frac{\beta_p N_p}{\gamma N^\infty_v}\beta_v\frac{N_v^\infty}{N_p}-r\right]I_p\\
-		 	  &-
-				rL_p-\frac{\beta_p N_p}{\gamma N^\infty_v}\frac{\beta_v}{N_p}I_vI_p\\
-			  &=
-			  	-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2 + \left[\frac{\beta_p N_p}{\gamma N^\infty_v}\beta_v\frac{N_v^\infty}{N_p}-r\right]I_p-rL_p-\frac{\beta_p N_p}{\gamma N^\infty_v}\frac{\beta_v}{N_p}I_vI_p\\
-			  &=
-			  	-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2 + r\left[\frac{\beta_p\beta_v}{\gamma r}-1\right]I_p-rL_p-\frac{\beta_p\beta_v}{\gamma N^\infty_v}I_vI_p.
+			-r S_p
+			\left(
+				1 - \frac{S_p^0}{S_p}
+			\right) ^ 2 - 
+			\left[
+				\frac{\beta_p N_p}{\gamma N^\infty_v}
+				\gamma - 
+				\frac{\beta_p N_p}{N_v^\infty}
+			\right] I_v + 
+			\left[
+				\frac{\beta_p N_p}{\gamma N^\infty_v}
+				\beta_v 
+				\frac{N_v^\infty}{N_p} - r
+			\right]I_p
+		\\
+			&-
+			r L_p - 
+			\frac{\beta_p N_p}{\gamma N ^ \infty_v}
+			\frac{\beta_v}{N_p} I_vI
+		\\
+			&=
+			- rS_p
+			\left(
+				1 - \frac{S_p^0}{S_p}
+			\right) ^ 2 +
+			\left[
+				\frac{\beta_p N_p}{\gamma N^\infty_v}
+				\beta_v
+				\frac{N_v^\infty}{N_p} - r
+			\right] I_p - 
+			rL_p - 
+			\frac{\beta_p N_p}{\gamma N ^ \infty_v}
+			\frac{\beta_v}{N_p} I_v I_p
+		\\
+			&=
+			-rS_p
+			\left(
+				1 - \frac{S_p^0}{S_p}
+			\right) ^ 2 + 
+			r
+			\left[
+				\frac{\beta_p \beta_v}{\gamma r} - 1 
+			\right] I_p - 
+			r L_p - 
+			\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p.
 	\end{align*}
-	
-	Expressing the right hand side of above equation in term of the basic reproductive number, $\mathcal{R}^s_0$ we get
-	
+	Expressing the right hand side of above equation in term of the basic 
+	reproductive number, $\mathcal{R}^s_0$ we get
 	\begin{align*}
 		V_x f &=
-		-rS_p\left(1-\frac{S_p^0}{S_p}\right)^2 + r\left[\mathcal{R}^s_0-1\right]I_p-rL_p-\frac{\beta_p\beta_v}{\gamma N^\infty_v}I_vI_p.
+			-r S_p
+			\left(
+				1 - \frac{S_p^0}{S_p}
+			\right) ^ 2 + 
+			r
+			\left[
+				\mathcal{R} ^ s_0 - 1
+			\right]I_p - 
+			r L_p - 
+			\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p.
 	\end{align*}
-
+%
 	Moreover,
-	
 	\begin{align*}
-		\frac{1}{2}trace(g^TV_{xx}g) 
+		\frac{1}{2}
+		\trace(g^TV_{xx}g) 
 			&=
-				\frac{1}{2} \sigma^2N_p\left(\frac{N_p-S_p}{S_p}\right)^2\\
-			&\leq
-				\frac{1}{2} \sigma^2 N_p.
-	\end{align*}
-	The stochastic terms are not neccesary, because they do a martingale procces and therefore, when we use integral and expectation they vanising.
-	Incorporation all terms calculate above, we obtain
-	
-	\begin{align*}
-		dV(X) 
-			&=
-				-rS_p 
-				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 + 
-				r
-				\left[
-					\mathcal{R} ^ s_0 - 1
-				\right] I_p - 
-				r L_p - \frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p + 
-				\frac{1}{2} \sigma ^ 2 N_p
+				\frac{1}{2} 
+				\sigma^2 N_p 
 				\left(
 					\frac{N_p - S_p}{S_p}
 				\right) ^ 2
 			\\
 			&\leq
-				-r S_p 
-				\left(
-					1 - 
-					\frac{S_p ^ 0}{S_p}
-				\right) ^ 2 + 
-				r
-				\left[
-					\mathcal{R}^s_0 - 1
-				\right] I_p - 
-				r L_p - 
-				\frac{\beta_p \beta_v }{\gamma N^ \infty_v} I_v I_p + 
-				\frac{1}{2} \sigma ^ 2 N_p.
+				\frac{1}{2} 
+				\sigma^2 N_p.
 	\end{align*}
-	Define $LV(X)$ as
+	The stochastic terms are not necessary, because they do a martingale 
+	process and therefore, when we use integral and expectation they vanishing.
+	
+	Combining the above terms, we obtain
 	\begin{align*}
-		LV(X) 
+		dV(X) 
 			&=
-				-rS_p 
+				-r S_p
 				\left(
 					1 - \frac{S_p^0}{S_p}
 				\right) ^ 2 + 
@@ -188,76 +459,95 @@ extinction and persistence according with a threshold.
 					\mathcal{R} ^ s_0 - 1
 				\right] I_p - 
 				r L_p - 
+				\frac{\beta_p \beta_v}{\gamma N ^ \infty_v}I_v I_p + 
+				\frac{1}{2} \sigma^2 N_p
+				\left(
+					\frac{N_p - S_p}{S_p}
+				\right)^2\\
+			&\leq
+				-rS_p\left(
+					1 - \frac{S_p^0}{S_p}
+				\right) ^ 2 +
+				r 
+				\left[
+					\mathcal{R}^s_0 - 1
+				\right] I_p - 
+				r L_p - 
 				\frac{\beta_p\beta_v}{\gamma N^\infty_v} I_v I_p + 
-				\frac{1}{2} \sigma^2 N_p.
+				\frac{1}{2} 
+				\sigma^2 N_p.
 	\end{align*}
-	
-	Using It\^{o}'s formula and integrating $dV$ from $0$ to $t$ as well as taking expectation yield the following
-	
+	Define $\mathcal{L}V(X)$ as
+	\begin{align*}
+		\mathcal{L}V(X) 
+			&=
+				-r S_p
+				\left(
+					1 - \frac{S_p^0}{S_p}
+				\right) ^ 2 + 
+				r 
+				\left[
+					\mathcal{R} ^ s_0 - 1
+				\right] I_p - 
+				r L_p - 
+				\frac{\beta_p\beta_v}{\gamma N ^ \infty_v} I_v I_p + 
+				\frac{1}{2} 
+				\sigma ^ 2 
+				N_p.
+	\end{align*}
+	Using It\^{o}'s formula and integrating $dV$ from 
+	$0$ to $t$ as well as taking expectation yield the following
 	\begin{align*}
 		0 
-			& \leq
-				\E V(t)- 
-				\E V(0)
-				\leq 
-					\E \int_{0}^{t} L V(X(s)) ds
-		\\
-			& \leq
-				-\E
-				\int_{0} ^ {t}
-					\left[
-						r S_p 
-						\left(
-							1 - \frac{S_p^0}{S_p}
-						\right) ^ 2 - 
-						r 
+			&\leq
+				\mathbb{E}V(t) - 
+				\mathbb{E}V(0) \leq 
+				\mathbb{E}
+				\int_{0} ^ {t} LV(X(s)) ds 
+			\\
+			&\leq
+				-\mathbb{E}
+					\int_{0} ^ {t}
 						\left[
-							\mathcal{R} ^ s_0 - 1
-						\right] I_p + 
-						r L_p + 
-						\frac{\beta_p\beta_v}{\gamma N ^ \infty_v} I_v I_p
-					\right] ds +  
-				\frac{1}{2} \sigma ^ 2 N_p
+							r S_p 
+							\left(
+								1 - \frac{S_p^0}{S_p}
+							\right) ^ 2 - 
+							r 
+							\left[
+								\mathcal{R}^s_0 - 1
+							\right] I_p + r L_p + 
+							\frac{\beta_p\beta_v}{\gamma N^\infty_v} I_v I_p
+						\right]ds + 
+				 \frac{1}{2}\sigma^2 N_p
 	\end{align*}
+	
 	Therefore,
 	\begin{align*}
-		\lim_{t\to\infty}
-		\frac{1}{t} 
-		\E \int_{0}^{t}
-		\left[
-			-r S_p 
-			\left(
-				1 - 
-				\frac{S_p ^ 0}{S_p} 
-			\right) ^ 2 + 
-			r 
+		\lim\limits_{t\to \infty}
+		\frac{1}{t}
+		\mathbb{E}
+			\int_{0} ^ {t}
 			\left[
-				\mathcal{R} ^ s_0 - 1
-			\right] I_p - 
-			r L_p - 
-			\frac{\beta_p \beta_v}{\gamma N^\infty_v}
-			I_v I_p 
-		\right] ds
-		\leq \frac{1}{2}\sigma^2 N_p.
-	\end{align*}
-
-	\begin{align*}
-		\lim_{t \to \infty}
-			\frac{1}{t}
-				\E \int_{0}^{t}
+				-r S_p
+				\left(
+					1 - \frac{S_p ^ 0}{S_p}
+				\right) ^ 2 +
+				r
 				\left[
-					r [\mathcal{R}^s_0 - 1 ]
-						I_p - rS_p
-						\left(
-							1 - \frac{S ^ 0_p }{ S_p }
-						\right) ^ 2 -
-						r L_p - 
-						\frac{\beta_p\beta_v}{\gamma} I_vI_p
-					\right]
-					dr
-					\leq 
-					\frac{1}{2} \sigma ^ 2 N_p ,\, a.s.
+					\mathcal{R}^s_0 - 1
+				\right] I_p - 
+				r L_p - 
+				\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p
+			\right]ds\leq \frac{1}{2}\sigma^2 N_p.
 	\end{align*}
+		
 \end{proof}
-
-\todo{Write a paragraph to describe why the limit above exponentially goes to zero.}
+\begin{remark}
+	Theorem \ref{theorem_2} shows that, if the basic stochastic reproductive 
+	number $\mathcal{R}^s_0$ is less than one, we have the solutions 
+	$X(t)=(S_p (t), L_p (t), (t ) I_p (t), S_v (t), I_v (t))^{\top}$ 
+	tend to the equilibrium point 
+	$(N_p, 0,0, N_v^{\infty}, 0)^{\top}$, 
+	when $t\rightarrow \infty$.
+\end{remark}

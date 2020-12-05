@@ -1,7 +1,4 @@
 %!TEX root = ../main.tex
-\section{Deterministic base dynamics}
-	\todo{translate this section}
-
 \begin{equation} 
 	\label{system_1} 
 	\begin{aligned} 
@@ -27,9 +24,63 @@
 	\end{aligned} 
 \end{equation} 
 \todo{Make a table for description of  all parameters}
+\begin{table}
+	\begin{center}
+		\begin{tabular}{rll} 
+			\toprule
+			Par. & Unit & Description 
+			\\ 
+			\midrule
+				$\beta_p$ 
+				& 
+					\SI{}{vector \per day}
+				& 
+					infection rate of susceptible 
+					plants by infected vectors 
+			\\ 
+				$r_1$, $r_2$ 
+				& 
+					$\SI{}{day}^{-1}$ 
+				& 
+					replanting rate of latent and 
+					infected plants, respectively. 
+			\\
+				$b$ 
+				& 
+					$\SI{}{day}^{-1}$ 
+				& 
+					latency rate, plant latent 
+					becomes infectious 
+			\\
+				$\gamma$ 
+				& 
+					$\SI{}{day}^{-1}$ 
+				&  vector death rate 
+			\\
+				$\mu$ 
+				& \SI{}{plant \per day}
+				& vector migration rates from alternative plants to crop
+			\\
+				$\theta$ 
+				& 
+				& proportion vector migration rate
+			\\
+				$\beta_v$ 
+				& \SI{}{plant\per day}
+				& infection rate of susceptible vectors by an infected plant
+			\\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\caption{
+		Parameters description and values of
+		deterministic dynamics in ODE (*).
+	}
+	\label{tbl:deterministic_tbl}
+\end{table}
 \todo{Redact this conservation law to the entire system \eqref{system_1}.
 Write a introductory paragraph to Thm 1}
-
+%
 \begin{theorem}\label{theorem_1}
 	With the notation of ODE \eqref{system_1}, let
 	\begin{equation*}
@@ -54,151 +105,3 @@ Write a introductory paragraph to Thm 1}
 		\end{aligned}
 	\end{equation*}
 \end{theorem}
-
-\todo{Why we want to normalize?}
-We use the following variable change to normalize  \eqref{system_1}:
-\begin{equation}
-	\label{eqn:normalization}
-	\begin{aligned}
-		& x = \frac{S_p}{N_p},
-		& y = \frac{L_p}{N_p},
-		& z = \frac{I_p}{N_p},
-		& v = \frac{I_p}{N_v},
-		& w = \frac{I_v}{N_v} .
-	\end{aligned}
-\end{equation}
-
-Then, deterministic system (\ref{system_1}) becomes
-\begin{equation}
-	\begin{aligned}
-		\label{system_2}
-		\dot{x} &=
-			-\beta_p x w + \tilde{r_1} y + \tilde{r_2} z 
-		\\
-		\dot{y} &=
-			\beta_p x w - (b + \tilde{r_1}) y 
-		\\
-		\dot{z} &=
-			b y - \tilde{r_2} z 
-		\\
-		\dot{v} &=
-			-\beta_v v z  +(1-\theta-v)\frac{\mu}{N_v} 
-		\\
-		\dot{w} &=
-			\beta_v v z + (\theta-w) \frac{\mu}{N_v}
-		\end{aligned}
-\end{equation}
-
-
-	Following ideas from [referencia], we quantify uncertinity in replanting rate of
-plants, and  died rate of vector, $r_1$, $r_2$ and $\gamma$, to this end, we
-perturb parameters  \todo{write here the parameters} $r_1 \dots$ whit a Winner
-process to obtain a stochastic differential equation(SDE). Here, the 
-perturbation describe stochastic environmental noise on each population. In
-symbols $ dB(t)=B(t+dt)-B(t)$ denotes the increment of a standard Wiener
-process, thus we perturb potentially replanting $r_1$, $r_2$, and vector death
-$\gamma$ in the infinitiesimal time interval $[t, t + dt)$ by
-\begin{equation}
-	\label{eq1}
-	\begin{aligned}
-		{r}_1 dt \rightsquigarrow r_1 dt + \sigma_L dB(t),
-		\\
-		{r}_2 dt \rightsquigarrow r_2 dt + \sigma_Id B(t),
-		\\
-		\gamma dt \rightsquigarrow \gamma dt + \sigma_vd B(t).
-	\end{aligned}
-\end{equation}
-\todo{Is the same Brownian motion for the three equations?}
-
-	Note that right hand side of \eqref{eq1} is a random perturbations of parameters
-$r_1$, $r_2$, $\gamma$, with mean
-$
-	\EX{r_1 dt + \sigma_L dB(t)}
-$
-and variance 
-\todo{Note that here we will use the latex proba package, plase use the same
-commands in the remain of the manuscript}
-$
-	\VarX{r_1 dt + \sigma_L dB(t)} = \sigma_L^2dt
-$, 
-$
-	\mathbb{E}(\tilde{r}_2dt) = r_2dt
-$ 
-and
-$
-	Var(\tilde{r}_2dt) = \sigma_I^2dt
-$ 
-and 
-$
-	\mathbb{E}(\tilde{\gamma}dt) = \gamma dt
-$ and 
-$
-	Var(\tilde{\gamma}dt) = \sigma_v^2dt
-$.
-%
-Thus, we establish an stochastic extencion from deterministic tomato model 
-\eqref{system_1} by the It\^{o} SDE
-
-\begin{equation}
-	\label{system_3}
-	\begin{aligned}
-		d S_p &=
-			\left(
-				-\beta_p S_p \frac{I_v}{N_v} + r_1 L_p + r_2 I_p
-			\right)dt 
-			+ (\sigma_L L_p
-			+ 
-			\sigma_I I_p)dB(t) 
-		\\
-		dL_p &=
-			\left(
-				\beta_p S_p \frac{I_v}{N_v} - b L_p - r_1 L_p
-			\right) dt 
-			- \sigma_L L_p dB(t) 
-		\\
-		d I_p &=
-			\left(
-				b L_p - r_2 I_p
-			\right) dt 
-			- \sigma_I I_p dB(t) 
-		\\
-		dS_v &=
-			\left(
-				-\beta_v S_v \frac{I_p}{N_p} - \gamma S_v  + (1-\theta) \mu
-			\right)dt - \sigma_v S_v dB(t) 
-		\\
-		d I_v &=
-			\left(
-				\beta_v S_v \frac{I_p}{N_p} -\gamma I_v + \theta \mu
-			\right) dt 
-			- \sigma_v I_v dB(t).
-	\end{aligned}
-\end{equation}
-Applyng the change of variable \eqref{eqn:normalization} to system (\ref{system_3}) results
-\begin{equation}
-	\begin{aligned}
-	\label{system_4}
-		d x(t) &=
-			(-\beta_p x w + r_1 y + r_2 z) dt 
-			+ (\sigma_L y + \sigma_I z) dB(t) 
-		\\
-		dy(t) &=
-			(\beta_p x w - (b + r_1) y) dt 
-			- \sigma_L y dB(t)
-		\\
-		dz(t) &=
-			(b y - r_2 z) dt -\sigma_I z dB(t)
-		\\
-		dv(t) &=
-			\left(
-				-\beta_v v z + (1-\theta-v) 
-				\frac{\mu}{N_v}
-			\right) dt 
-		\\
-		dw(t) &=
-			\left(
-				\beta_v v z 
-				+ (\theta-w) \frac{\mu}{N_v}
-			\right) dt
-	\end{aligned}
-\end{equation}
