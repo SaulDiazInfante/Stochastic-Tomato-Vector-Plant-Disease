@@ -26,6 +26,7 @@
 \usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage[section]{placeins}
+%\usepackage[symbol]{footmisc}
 \definecolor{darkblue}{rgb}{0,0.1,0.5}
 \hypersetup{colorlinks,
             linkcolor=darkblue,
@@ -33,10 +34,7 @@
             citecolor=darkblue}
 %
 \DeclareMathOperator{\trace}{trace}
-%
-%\let\cl@chapter\undefined
-%\makeatletter
-%\usepackage[nameinlink, noabbrev]{cleveref}
+%\def\correspondingauthor{\footnote{Corresp%onding author.}}
 \newcommandx{\unsure}[2][1=]{%
 	\todo[%
         linecolor=gray,
@@ -64,37 +62,52 @@
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
 %-------------------------------------------
 \smartqed 
+\journalname{noLDAM}
+\usepackage{scrtime}
+% fnpct instead of footmisc:
+\usepackage[dont-mess-around]{fnpct}
+
+% patch \maketitle:
+\usepackage{etoolbox}
+\newcommand*{\affaddr}[1]{#1} % No op here. Customize it for different styles.
+\newcommand*{\affmark}[1][*]{\textsuperscript{#1}}
+\usepackage{latexsym}
 \begin{document}
 	\title{%
-		Threshold behavior of a stochstic vector plant model.
+		Threshold behavior of a stochastic vector plant model.
 	}
 	\subtitle{%
 		The Tomato Yellow Curl Virus
 	}
 	\author{%
-		Gabriel A. Salcedo-Varela  \and 
-		Saul Diaz-Infante\thanks{Corresponding author.}
+		Gabriel Salcedo-Varela \and 
+		Saul Diaz-Infante
 	}
 	\institute{
 		Gabriel Salcedo-Varela \at
 		Universidad de Sonora,
+		\\
 		Departamento de Matem\'aticas, 
-		Boulevard Luis Encinas y Rosales s/n Col. 
-		Centro, Hermosillo, Sonora, CP 83000
-		Hermosillo, Sonora 
+		\\
+		Boulevard Luis Encinas y Rosales s/n Col. Centro, 
+		\\
+		Hermosillo, Sonora, CP 83000
 		\\
         Tel.: +521 (662)-259-2155, ext. 2394
         \\
         Fax: +521 (662) 259-2219
         \\
-        \email{correo@institucional}           
-        \and Saul Diaz Infante Velasco 
+        \email{correo@institucional}
+        \and
+         Saul Diaz Infante Velasco 
         \at
         CONACYT-Universidad de Soonora,
+		\\
 		Departamento de Matem\'aticas, 
-		Boulevard Luis Encinas y Rosales s/n Col. 
-		Centro, Hermosillo, Sonora, CP 83000
-		Hermosillo, Sonora 
+		\\
+		Boulevard Luis Encinas y Rosales
+		s/n Col. Centro,		\\
+		Hermosillo, Sonora, CP 83000
 		\\
         Tel.: +521 (662)-259-2155
         \\
@@ -106,7 +119,7 @@
 	\titlerunning{SDE-vector plant}
 	\authorrunning{G. Salcedo-Varela, S. Diaz-Infante}
 	\maketitle
-	\keywords{Keywords}
+	%\keywords{Keywords}
 	%
 	\begin{abstract}
 		BACKGROUND
@@ -123,13 +136,20 @@
 		\label{sec:model_formulation}
 		\input{Sections/Model}
 		\subsection{Deterministic fixed points}
+			\change{
+			    Move definition of invariant set to this section.
+			    Write a paragraph about Positivity invariance
+			    Compute $R_O$ and write paragraphs to
+			    describe fixed points. Fist Free disease.
+			} 
 			\input{Sections/Equilibrium_Points}
+			
 	\section{Stochastic extension}
 		\input{Sections/stochastic_extension}
 	\section{Existence of a unique positive solution}
 		\label{sec:solution_existence}
 		\input{Sections/Existence}
-	\section{Disiease extinction}
+	\section{Disease extinction}
 		\label{extinction}
 		\input{Sections/Extinction}
 		\input{Sections/Prove_Theorem_Rs0}
