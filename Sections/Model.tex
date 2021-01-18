@@ -1,6 +1,7 @@
 %!TEX root = ../main.tex
-\begin{equation} 
-	\label{system_1} 
+\info{Write deterministic model formulation. Cite Holt. Descrie importatn hypothesis.}
+\begin{equation}
+	\label{sys::DeterministicSystem} 
 	\begin{aligned} 
 		\dot{S_p} &= 
 			-\beta_p S_p
@@ -21,9 +22,20 @@
 			\beta_v S_v \frac{I_p}{N_p} 
 			- \tilde{\gamma} I_v
 			+ \theta \mu 
+			 \\
+			S_p(0) &=S_{p0}, 
+            L_p(0) = L_{p0},
+            I_p(0) = I_{p0},
+            \\
+             S_v(0) &= S_{v0},
+              I_v(0) = I_{v0}
+             \\
+             N_p(t) &= S_p(t) + L_p(t) + I_p(t),
+             \\
+             N_v(t) &= S_v(t) + I_v(t),
 	\end{aligned} 
 \end{equation} 
-\todo{Make a table for description of  all parameters}
+%\todo{Make a table for description of  all parameters}
 \begin{table}
 	\begin{center}
 		\begin{tabular}{rll} 
@@ -78,7 +90,8 @@
 	}
 	\label{tbl:deterministic_tbl}
 \end{table}
-
+%\info{Add initial conditions}
+%
 \begin{table}
 	\begin{center}
 		\begin{tabular}{rllll} 
@@ -168,7 +181,7 @@
 			\\
 			    $\sigma_p$ 
 			    &
-			    
+			        -
 			    &
 			        0.3 
 			    & 
@@ -178,7 +191,7 @@
 			\\
                 $\sigma_v$ 
                 & 
-                
+                    -
                 &
                     0.3 
                 & 
@@ -196,23 +209,27 @@
 	\label{tbl:value}
 	\end{table}
 
-\todo{Redact this conservation law to the entire system \eqref{system_1}.
-Write a introductory paragraph to Thm 1}
-%
-\begin{theorem}\label{theorem_1}
-	With the notation of ODE \eqref{system_1}, let
+%\todo{%Redact this conservation law to the entire system \autoref{sys::DeterministicSystem}.
+%Write a introductory paragraph to Thm 1}
+
+Note that we have conservation laws for populations of plants and vectors.
+In the plant population, we have a constant population conservation law.
+Whereas for vector population, we do not have a constant population, but we bound
+the total population by a positive constant. \autoref{thm::conservationlaw}
+shows the bound for each law conservation.
+
+\begin{theorem}\label{thm::conservationlaw}
+	With the notation of ODE \eqref{sys::DeterministicSystem}, let
 	\begin{equation*}
 		\begin{aligned}
-			N_v(t) &:= S_v(t) + I_v(t) 
-		 	\\
 		 	N_v^{\infty} &:= \frac{\mu}{\gamma}.
 		 \end{aligned}
 	\end{equation*}
 	Then for any initial condition 
 	$
 		(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0) )^\top
-	 	\in {(0,\infty) \times (0, N^\infty_v)}
-	$, she plant and vector total populations respectively satisfies
+	 	\in \Gamma
+	$, plant and vector total populations respectively satisfies
 	\begin{equation*}
 		\begin{aligned}
 			& \frac{d N_p}{dt} =

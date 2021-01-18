@@ -1,31 +1,32 @@
 %!TEX root = ../main.tex
-Thereom *.* of [Mao Book] assures ths existence of unique solution of 
-\eqref{system_3} in a compact interval. Since we study asymptotic behaviour, 
+Thereom 3.4 \cite[see][p. 58]{Mao2008} assures the existence of unique solution of 
+\autoref{sys::StochasticSystem} in a compact interval. Since we study asymptotic behaviour, 
 we have to assure the existence of unique-globally-positive invariant solution 
-of SDE (*). The following result prove that this set is positive invariant.
+of SDE \autoref{sys::StochasticSystem}. The following result prove that this set is positive invariant.
 %
-\begin{theorem}\label{existence-unique}
+%\info{Modify notation of invariant set}
+\begin{theorem}\label{thm::existence-unique}
 	For any initial values 
 	$
 		(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0))^{\top}
-		\in \mathbf{E}
+		\in \Gamma
 	$, 
 	exists unique a.s. invariant global positive solution to SDE 
-	\eqref{system_3} in $\mathbf{E}$, that is,
+	\autoref{sys::StochasticSystem} in $\Gamma$, that is,
 	\begin{equation*}
 		\probX{
 			(L_p(t), I_p(t), S_v(t), I_v(t)) 
 			\in 
-			\mathbf{E}, \quad
+			\Gamma, \quad
 			\forall t \geq 0
 		} = 1.
 	\end{equation*}
 \end{theorem}
 %
 \begin{proof}
-		Since the right hand side of system \eqref{system_3} are quadratic, 
-	linear and constans terms, this imply that they are locally Lipschitz. We 
-	know by [ref Mao], that for any initial condition
+		Since the right hand side of system \autoref{sys::StochasticSystem} are quadratic, 
+	linear and constants terms, this imply that they are locally Lipschitz. We 
+	know by \cite[see][pp.300]{Mao2008}, that for any initial condition
 	$
 		(
 			S_p(0),
@@ -33,7 +34,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 			I_p(0),
 			S_v (0),
 			I_v(0)
-		)^{\top} \in \mathbf{E}
+		)^{\top} \in \Gamma
 	$ 
 	there is a unique maximal local solution 
 	$(S_p(t), L_p(t), I_p(t), S_v(t), I_v(t))^{\top}$ 
@@ -74,10 +75,9 @@ of SDE (*). The following result prove that this set is positive invariant.
 					\right)
 			\right\},
 		\end{multline}
-%	
-	\improvement{Give an argument}
-	We know that $\tau_k \nearrow \tau_\infty$. 
-	In other words, $\tau_\infty = \infty$ a.s. 
+    Since $k\geq k_0$ and $\left(\frac{1}{k},N_{\bullet}-\frac{1}{k}\right)$ is a increasing by 
+    the right side, we have $\tau_1\leq \tau_2\leq \dots \leq \tau_k \ldots$ and by definition
+    $\tau_k\leq\tau_e$. Then $\tau_k\to \tau_{\infty}$. In other words, $\tau_\infty = \infty$ a.s. 
 	implies
 	\begin{equation}
 		\label{eqn:invariance_prop}
@@ -90,7 +90,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 		)^{\top}\in \mathbf{E}
 	\end{equation}
 	 a.s. for all $t\geq 0$. Thus, 
-	we  show that $\tau_\infty=\infty$ a.s. To this end,  we proced
+	we  show that $\tau_\infty=\infty$ a.s. To this end,  we proceed
 	by contradiction. Suppose that the above statement is false for a given 
 	time $t$, then there is 
 	a pair of constants $T>0$ and $\epsilon  \in (0,1)$  such that some 
@@ -108,7 +108,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 	$. 
 	Hence, there is an integer $k_1\geq k_0$ such that
 %	
-	\begin{equation}\label{Positive1}
+	\begin{equation}\label{eqn::Probabilityoftau_k}
 		\P[\tau_k\leq T]>\epsilon,
 		\quad \forall k\geq k_1.
 	\end{equation}
@@ -121,10 +121,9 @@ of SDE (*). The following result prove that this set is positive invariant.
 			\frac{1}{N_p-x}.
 	\end{equation*}
 %	
-	According to the inifinitesimal operation $\mathcal{L}$
-	see \autoref{app:} APPENDIX
-	\improvement{Write auxiliar results in a fucking appendix}
-	By diffusion operator, we have, for any $t\in [0,T]$ and $k\geq k_1$ 
+	According to the diffusion operation $\mathcal{L}$
+	see \autoref{eqn::DifussionOperator}. By diffusion operator, we have, for any 
+	$t\in [0,T]$ and $k\geq k_1$ 
 %
 	\begin{align*}
 		\mathcal{L}[V_p(L_p)] 
@@ -168,7 +167,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 				\\
 	\end{align*}
 %	
-	Droping negative terms, we bound the above relation by
+	Dropping negative terms, we bound the above relation by
 	\begin{align*}
 		\mathcal{L}[V_p(L_p)] 
 			&\leq	
@@ -182,11 +181,11 @@ of SDE (*). The following result prove that this set is positive invariant.
 				\sigma_p ^ 2
 				\frac{L_p ^ 2 S_p ^ 2}{N_p ^ 2}.
 	\end{align*}
-	Moreover we see that $S_p\leq N_p-L_p=S_p+I_p$, thus
-	\info{Rewview this steap}
+	Since $S_p\leq S_p+I_p\leq N_p-L_p$, we have $\frac{S_p}{N_p-L_p}\leq 1$, then
+	%\info{Rewview this steap}
 	\begin{align*}
 		\mathcal{L}[V_p(L_p)] 
-			&\le q		
+			&\leq		
 				\frac{\beta_p}{N_p -L_p} + 
 				\frac{(b + r_1)}{L_p} + 
 				\sigma_p^2
@@ -195,8 +194,8 @@ of SDE (*). The following result prove that this set is positive invariant.
 					\frac{L_p^2}{N_p^2(N_p-L_p)}
 				\right].
 	\end{align*}
-	And this implies that
-	\info{explain why}
+	And by $L_p\leq N_p$ we bound the diffusion operator as
+	%\info{explain why}
 	\begin{align*}
 		\mathcal{L}[V_p(L_p)] 
 			&\leq		
@@ -211,14 +210,15 @@ of SDE (*). The following result prove that this set is positive invariant.
 	%
 	Now define $C := (b+r_1) \vee \beta_p +\sigma_p^2$, we obtain the 
 	following inequality
-	\begin{align}\label{Positive2}
+	\begin{align}\label{eqn::BoundDiffusionOperator}
 		\mathcal{L}[V(L_p)] 
 			&\leq		
 				C V_p(L_p).
 	\end{align}
-%
 	
-		By It\^{o}'s formula \change{cite Appendix}, and applying expectation, we have, for any 
+	By It\^{o}'s formula see Appendix A \autoref{eqn::Itoformula}, and applying
+	\change{Fix appendix reference}
+	expectation, we have, for any 
 	$t \in [0,T]$ and $k\geq k_1$
 	\begin{align*}
 		\E V(L_p(t\wedge\tau_k)) &= 
@@ -228,7 +228,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 			ds.
 	\end{align*}
 	%
-	By equation \eqref{Positive2} and Fubini's Theorem, we have
+	By equation \autoref{eqn::BoundDiffusionOperator} and Fubini's Theorem, we have
 	\begin{align*}
 		\E V(L_p(t\wedge\tau_k)) 
 			&\leq 
@@ -239,7 +239,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 				ds.
 	\end{align*}
 	Applying the Gronwall inequality yields that	
-	\begin{align}\label{Positive3}
+	\begin{align}\label{eqn::GronwallBound}
 		\E V(L_p(t\wedge\tau_k))&\leq V(L_p(0))e^{CT}.
 	\end{align}
 
@@ -247,7 +247,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 	$
 		\Omega_k = \{\omega : \tau_k\leq T\}
 	$ for $k\geq k_1$, note that by relation in 
-	\autoref{Positive1}, 
+	\autoref{eqn::Probabilityoftau_k}, 
 	$
 		\P(\Omega_k) >  \epsilon
 	$. For every 
@@ -275,7 +275,7 @@ of SDE (*). The following result prove that this set is positive invariant.
 			& \geq k.
 	\end{align*}
 %	
-	It follows from equation \eqref{Positive3}, that
+	It follows from equation \autoref{eqn::GronwallBound}, that
 	\begin{equation*}
 		V_p(L_p(0)) e^{CT}
 			\geq 
@@ -293,6 +293,6 @@ of SDE (*). The following result prove that this set is positive invariant.
 		\infty>V_p(L_p(0))e^{CT}\geq \infty.	
 	\end{equation*}
 %
-	Therfore we  have $\tau_\infty=\infty$ a.s., and the proof is 
+	Therefore we  have $\tau_\infty=\infty$ a.s., and the proof is 
 	complete. \qed
 \end{proof}

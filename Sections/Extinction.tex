@@ -1,12 +1,23 @@
 %!TEX root = ../main.tex
-
 	In this section we will study when the disease can be extinguished, for 
 this we will give the necessary conditions so that this phenomenon can occur 
 through two different cases. The first case will be when due to the intensity 
-of the noise.The theorem presented below shows that under conditions on the parameters we can make the disease tend to become extinct.
-\change{def exponentia stability}
-\begin{theorem}\label{theorem_noise}[Extinction by noise]
-	If
+of the noise.The theorem presented below shows that under conditions on the
+parameters we can make the disease tend to become extinct.
+%\change{Change definition to taalkabout FDE point}
+\begin{definition}\label{def::ExponentialStability}
+The free-disease fixed point of \autoref{sys::StochasticSystem} is said to be almost surely exponentially stable if
+\begin{equation}\label{eqn::ExponentialStability}
+		\limsup_{t \to \infty}
+		\frac{1}{t}
+		\ln(L_p + I_p) < 0 \text{ and }
+		\limsup_{t \to \infty}
+		\frac{1}{t}\ln(I_v)< 0\qquad\mbox{a.s.}
+\end{equation}
+\end{definition}
+
+\begin{theorem}\label{thm::NoiseExtinction}
+	Let	any initial condition $(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0)) ^ \top \in \Gamma$. If
 	\begin{align*}
 		\frac{\beta_p ^ 2}{2\sigma_L ^ 2} + 
 		\frac{r_2^2}{2\sigma_I^2} + 
@@ -14,16 +25,15 @@ of the noise.The theorem presented below shows that under conditions on the para
 		\qquad
 		\frac{\beta_v^2}{2\sigma_v^2} + 
 		\beta_v - \gamma + \theta \mu < 0,
-	\end{align*}		
+	\end{align*}
 	 then the disease will exponentially extinguish with probability one. That 
-	 is, for any initial condition 
-	 $(S_p(0), L_p(0), I_p(0), S_v(0), I_v(0)) ^ \top \in \mathbb{R}_+^5$
+	 is, 
 	\begin{equation*}
-		\limsup_{t\infty \to \infty}
+		\limsup_{t \to \infty}
 		\frac{1}{t}
 		\ln(L_p + I_p) < 0 \text{ and }
-		\limsup_{t\infty \to \infty}
-		\frac{1}{t}\ln(I_v)< 0\,\,\mbox{a.s.}
+		\limsup_{t \to \infty}
+		\frac{1}{t}\ln(I_v)< 0\qquad\mbox{a.s.}
 	\end{equation*}
 \end{theorem}
 \begin{proof}
@@ -106,14 +116,14 @@ of the noise.The theorem presented below shows that under conditions on the para
 			&\leq
 				-\frac{\sigma_L ^ 2}{2}
 				\int_{0} ^ {t}
-					\left(
+					\left[
 						\left(
 							x - 
 							\frac{\beta_p}{\sigma_L ^ 2}
 						\right) ^ 2 + 
 						\frac{\beta_p ^ 2}{2 \sigma_L ^ 2} + 
 						2 \beta_p - (b + r_1)
-					\right) du
+					\right] du
 				\\
 			&-
 				\int_{0} ^ {t}
@@ -122,7 +132,7 @@ of the noise.The theorem presented below shows that under conditions on the para
 	\end{align*}
 	which implies,
 	\begin{equation}
-	\label{eq4.1}
+	\label{eqn::ItoForBound}
 		\begin{aligned}
 			\frac{1}{t}\ln(L_p+I_p) 
 				&\leq
@@ -151,15 +161,15 @@ of the noise.The theorem presented below shows that under conditions on the para
 			\frac{1}{t} \ln(L_p(0)+I_p(0)) .
 	$$ 
 	Since the integral in the term $M_t$ is a martingale, the strong law of
-	large numbers for martingales \cite{Mao}, implies that
+	large numbers for martingales \cite[see][Theorem 3.4, pp.12]{Mao2008}, implies that
 	\begin{equation*}
 		\lim
 		\limits_{t \to \infty} M_t = 0\,\,
 		\mbox{a.s.}
 	\end{equation*}
-	Thus, from relation (\ref{eq4.1}) we obtain
+	Thus, from relation \autoref{eqn::ItoForBound} we obtain
 	\begin{align}
-		\label{eq4.2}
+		\label{eqn::Bound1}
 		\limsup_{t\infty \to \infty}
 		\frac{1}{t}
 		\ln(L_p + I_p) < 
@@ -167,14 +177,14 @@ of the noise.The theorem presented below shows that under conditions on the para
 			2\beta_p - (b + r_1)
 	\end{align}
 	A similar argument also shows that
-	\begin{align}\label{eq4.3}
+	\begin{align}\label{eqn::Bound2}
 		\limsup_{t\infty \to \infty}
 		\frac{1}{t}
 		\ln(L_p + I_p) < 
 		\frac{r_2 ^ 2}{2 \sigma_I ^ 2} + b
 	\end{align}
 %
-	Through the equations (\ref{eq4.2}) and (\ref{eq4.3}), we obtain
+	Through by \autoref{eqn::Bound1} and \autoref{eqn::Bound2}, we obtain
 %	
 	\begin{align*}
 		\limsup_{t\infty \to \infty}
@@ -185,7 +195,7 @@ of the noise.The theorem presented below shows that under conditions on the para
 			\frac{r_2^2}{2 \sigma_I ^ 2} +	
 			2\beta_p - r_1
 	\end{align*}
-	and 
+	and for infected vector we obtain
 	\begin{align*}
 		\limsup_{t\infty \to \infty}
 		\frac{1}{t}
@@ -195,77 +205,38 @@ of the noise.The theorem presented below shows that under conditions on the para
 			+ 
 			\beta_v - \gamma + \theta \mu
 	\end{align*}
+	\qed
 \end{proof}
 %
 \begin{remark}
-	Theorem \ref{theorem_noise} shows that, under certain conditions on the 
-	parameters can cause disease exponentially towards zero whenever the noise 
-	intensity is large enough.
+\autoref{thm::NoiseExtinction} shows that, under certain conditions on the
+parameters can cause disease exponentially towards zero whenever the noise
+intensity is large enough.
 \end{remark}
 
-	The next case of extinction of the disease is through the basic 
-reproductive number. For the deterministic case, defining the basic 
-reproductive number is done using the next generation matrix [Van der drish], 
-but in the stochastic case it is not possible to give such a definition.
+To define the stochastic reproductive number we will use techniques similar to
+those used in\cite{Agarwal2019}, in which, by means of algebraic procedures,
+this parameter can be defined. 
 
-	To define the stochastic reproductive number we will use the techniques 
-used in [Agwar], in which, by means of algebraic procedures, this parameter 
-can be defined. As our deterministic base structure this paramenters 
-summarizes the behavior of extinction and persistence according to a threshold.
+To define the basic stochastic reproductive number, let's define 
+$ r = \max \{r_1, r_2 \}$. 
+Then the basic reproductive number of the system \autoref{sys::StochasticSystem}
+is defined as
 
-	Our analysis needs the following function and conditions.
-\change{hypotesis env}
-\begin{enumerate}[(H-1)]
-	\item
-	According to SDE \eqref{system_3}, replatin rates satisfies 
-	$r=r_1+r_2$. 
-	\item
-	The replanting noise intesities are equal
-	$\sigma_L = \sigma_I = \sigma_p$.
-\end{enumerate}
-Given a function 
-$
-	V\in C^{2,1}(\R^n\times\R_{+};\R)
-$, 
-define an operator 
-$
-	LV:\R ^ n \times \R_{+}\to\R
-$ by
-\begin{equation}\label{InfiOpera}
-	\mathcal{L}[V(x,t)] = 
-		V_t(x,t) + 
-		V_x(x,t) f(x,t) + 
-		\frac{1}{2} 
-		\trace(g^T(x,t)V_{xx}(x,t)g(x,t))
-\end{equation}
-%
-which is called the diffusion operator of the It\^{o} process associated with 
-the $C^{2,1}$ function $V$. With this diffusion operator, the It\^{o} formula 
-can be written as
-\begin{equation}\label{Itoformula}
-	dV(x(t),t) = 
-		\mathcal{L}
-			V(x(t),t)dt + 
-			V_x(x(t), t) 
-			g(x(t),t) dB(t) \qquad a.s.
-\end{equation}
-We define the repoductive nomber of our stochastic model in 
-SDE (\ref{system_3}) by
-\begin{equation}\label{eq5}
+\begin{equation}\label{eqn::StochasticBRN}
 	\mathcal{R}_0 ^ s =
-		\frac{\beta_p \beta_v}{\gamma r}
+		\frac{\beta_p \beta_v}{\gamma r}.
 \end{equation}
 %
-\improvement{rename labels}
+The following theorem proves that under $\mathcal{R}^s_0<1$, the infected plants
+and vectors tends to zero.
+%\change{Rewrite according to the above notation}
 \begin{theorem}
-	\label{theorem_2}
-	Let $(S_p(t),L_p(t),I_p(t),I_v(t))$ 
-	be the solution of SDE \eqref{system_3} with initial values 
+	\label{thm::Rs0Extinction}
+	Let $(S_p(t),L_p(t),I_p(t),I_v(t))^\top$ 
+	be the solution of SDE \autoref{sys::StochasticSystem} with initial values 
 	$
-		(S_p(0),L_p(0),I_p(0),I_v(0)) \in (0,N_p) 
-		\times(0, N_p) \times(0,N_p)
-		\\
-		\times(0, N_v)
+		(S_p(0),L_p(0),I_p(0),I_v(0))^\top \in \Gamma
 	$. 
 	If $0\leq \mathcal{R}^s_0<1$, 
 	then the following conditions holds
@@ -286,270 +257,588 @@ SDE (\ref{system_3}) by
 				\frac{\beta_p\beta_v}{\gamma} 
 				I_v I_p
 			\right] dr 
-			\leq \frac{1}{2} \sigma ^ 2 N_p,\, a.s.,
+			\leq \frac{1}{2} \sigma_p^ 2 N_p,\, a.s.,
 	\end{align*}
 	namely, the infected individual tends to zero exponentially a.s, i.e the 
 	disease will die out with probability one.
 \end{theorem}
 %
 \begin{proof}
-		The proof consitst verify the hypotheses of Khasminskii Theorem [*] 
-	for  the Lyapunov function
+	The proof consist verify the hypotheses of Khasminskii Theorem 
+	\change{Fix citation}
+	\info{Write Khasminskii Theorem in appendix}
+	\cite{Agarwal2019} for 
+	the Lyapunov function
+	%
 	\begin{align*}
-		V(S_p,L_p,I_p,I_v) &= 
-			\left(
-				S_p - S_p^0 -  S_p^0 
-				\ln 
-				\frac{S_p}{S_p^0}
-			\right) + 
-			L_p + 
-			I_p + 
-			\frac{\beta_p N_p}{\gamma N^\infty_v}I_v,
+		V(S_p, L_p, I_p, S_v, I_v) 
+			=& 
+				\left(
+					S_p - N_p - N_p 
+					\ln 
+					\frac{S_p}{N_p}
+				\right) + 
+				L_p + I_p + 
+				\frac{\beta_p N_p}{\gamma N^\infty_v} I_v
+			\\
+			&+
+				\left(
+					S_v - N_v - N_v 
+					\ln
+					\frac{S_v}{N_v}
+				\right).
 	\end{align*}
-	Let $f$, 
-	$g$ respectively be the dirft and difussion of SDE (\ref{Positive3}).	
-	Applyng the diffusion operator $\mathcal{L}$ we have
-	\begin{align*}
-		V_x f &=
-			\left(
-				1-\frac{S_p^0}{S_p}
+	%
+	Let $f$, $g$ respectively be the drift and diffusion of SDE 
+	\autoref{sys::StochasticSystem}. Applying the diffusion operator
+	$\mathcal{L}$ we have
+	%
+	\begin{equation}\label{eqn::LyapunovFunction}
+		\begin{aligned}
+			V_x f 
+				&\leq
+					\left(
+						1 - 
+						\frac{N_p}{S_p}
+					\right)
+					\left(
+						-
+						\frac{\beta_p}{N^\infty_v} S_p I_v + 
+						r N_p - r S_p
+					\right) + 
+					\frac{\beta_p}{N^\infty_v} S_p I_v - 
+					(b + r) L_p
+				\\
+				&+
+					b L_p - r I_p + 
+					\left(
+						1 - 
+						\frac{N_v}{S_v}
+					\right)
+					\left( 
+						-\frac{\beta_v}{N_p} S_v I_p - 
+						\gamma S_v + 
+						(1 - \theta) \mu 
+					\right)
+				\\
+				&+
+					\frac{\beta_p N_p}{\gamma N ^ \infty_v}
+					\left(
+						\frac{\beta_v S_v}{N_p}
+						I_p - \gamma I_v + 
+						\theta \mu
+					\right)  \ .
+		\end{aligned}
+	\end{equation}
+	Expanded the term $\left(
+				1 - \frac{N_p}{S_p}
 			\right)
 			\left(
-				-\frac{\beta_p}{N ^ \infty_v} S_pI_v + 
+				-\frac{\beta_p}{N^\infty_v} S_p I_v +
 				r N_p - r S_p
-			\right) + 
-			\frac{\beta_p}{N^\infty_v} S_p I_v - 
-			(b + r) L_p
+			\right)$ 
+			of \autoref{eqn::LyapunovFunction} and factoring the term $S_p$,
+			we obtain
+	\begin{equation}
+		\label{theorem2term1}
+		\begin{aligned}
+			\left(
+				1 - \frac{N_p}{S_p}
+			\right)
+			&
+			\left(
+				-\frac{\beta_p}{N^\infty_v} S_p I_v +
+				r N_p - r S_p
+			\right) 	
 			\\
-			  &+
-				b L_p - rI_p + 
-				\frac{\beta_p N_p}{\gamma N ^ \infty_v}
+			&=
 				\left(
-					\frac{\beta_v N_v}{N_p}I_p - 
-					\frac{\beta_v}{N_v^\infty} I_vI_p - 
-					\gamma I_v
+						1 - \frac{N_p}{S_p}
+					\right)
+					\left(- r S_p 
+						\left(
+							1 - \frac{N_p}{S_p}
+						\right) - 
+						\frac{\beta_p}{N^\infty_v} S_p I_v
+					\right)
+			\\
+			&=
+				- r S_p 
+				\left(
+					1 - 
+					\frac{N_p}{S_p}
+				\right) ^ 2 - 
+				\frac{\beta_p}{N ^ \infty_v} S_p I_v + 
+				\frac{\beta_p}{N ^ \infty_v} N_p I_v .
+		\end{aligned}
+	\end{equation}
+	%\improvement{rewrite}
+	For the term $\left(
+				1 - 
+				\frac{N_v}{S_v}
+			\right)
+			\left(
+				-\frac{\beta_v}{N_p} S_v I_p - 
+				\gamma S_v + 
+				(1 - \theta) \mu 
+			\right) $,
+			since $\theta\in [0,1]$ and $(1-\theta)\mu\leq \gamma N_v$
+			we bound by the following
+	\begin{equation}\label{theorem2term2}
+		\begin{aligned}
+			\left(
+				1 - 
+				\frac{N_v}{S_v}
+			\right)
+			&
+			\left(
+				-\frac{\beta_v}{N_p} S_v I_p - 
+				\gamma S_v + 
+				(1 - \theta) \mu 
+			\right) 
+			\\
+			&
+			\leq
+				\left(
+					1 - \frac{N_v}{S_v}
+				\right)
+				\left(- 
+					\frac{\beta_v}{N_p} S_v I_p -
+					\gamma S_v +\gamma N_v
 				\right)
 			\\
-			  &=
-			  	-rS_p 
-			  	\left(
-			  		1 - \frac{S_p^0}{S_p}
-			  	\right) ^2 -
-			  	\frac{\beta_p}{N_v ^ \infty} S_pI_v +
-			  	\frac{\beta_p}{N_v ^ \infty} I_vS_p ^ 0 + 
-			  	\frac{\beta_p}{N_v ^ \infty} S_pI_v - 
-			  	r(L_p + I_p)
+			&\leq
+				\left(
+					1 - \frac{N_v}{S_v}
+				\right)
+				\left(-
+					\gamma S_v
+					\left(
+						1 - 
+						\frac{N_v}{S_v}
+					\right) -
+					\frac{\beta_v}{N_p} S_v I_p
+				\right)
 			\\
-			  &+
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-			  	\left(
-			  		\frac{\beta_v N_v}{N_p}I_p - 
-			  		\frac{\beta_v}{N_v^\infty} I_vI_p -
-			  		\gamma I_v
-			  	\right)
+			&\leq
+				-\gamma S_v 
+				\left(
+					1- 
+					\frac{N_v}{S_v}
+				\right) ^ 2 - 
+				\frac{\beta_v}{N_p} S_v I_p + 
+				\frac{\beta_v}{N_p} N_v I_p \ .
+		\end{aligned}
+	\end{equation}
+	Same way from above calculation, and since 
+	$\theta \mu\leq \theta\gamma N_v$, we obtain
+	\begin{equation}
+		\label{theorem2term3}
+		\begin{aligned}
+			\frac{\beta_p N_p}{\gamma N^\infty_v}
+			\left(
+				\frac{\beta_v S_v}{N_p} I_p- 
+				\gamma I_v + \theta \mu
+			\right)
+			&\leq
+				\frac{\beta_p N_p}{\gamma N^\infty_v}
+				\left(
+					\frac{\beta_v S_v}{N_p} I_p -
+					\gamma I_v + 
+					\theta \gamma N_v
+				\right) 
 			\\
-			  &=
-			  	-r S_p 
-			  	\left(
-			  		1 - 
-			  		\frac{S_p^0}{S_p}
-			  	\right) ^ 2 + 
-			  	\frac{\beta_p}{N_v^\infty} I_v S_p ^ 0 - 
-			  	r (L_p + I_p) + 
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-			  	\frac{\beta_v N_v}{N_p}I_p
-			\\
-			  &-	
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-			  	\frac{\beta_v}{N_v ^ \infty} I_vI_p - 
-			  	\frac{\beta_p N_p}{\gamma N ^ \infty_v} \gamma I_v
-			\\
-	\end{align*}
-	Then,
+			&\leq
+				\frac{\beta_p \beta_v S_v I_p}{\gamma N_v} - 
+				\frac{\beta_p N_p}{ N^\infty_v} I_v + 
+				\beta_p \theta N_p.
+		\end{aligned}
+	\end{equation}
 	\begin{align*}
-		V_x f &=
-			-r S_p
-			\left(
-				1 - \frac{S_p^0}{S_p}
-			\right) ^ 2 - 
-			\left[
-				\frac{\beta_p N_p}{\gamma N^\infty_v}
-				\gamma - 
-				\frac{\beta_p N_p}{N_v^\infty}
-			\right] I_v + 
-			\left[
-				\frac{\beta_p N_p}{\gamma N^\infty_v}
-				\beta_v 
-				\frac{N_v^\infty}{N_p} - r
-			\right]I_p
-		\\
-			&-
-			r L_p - 
-			\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-			\frac{\beta_v}{N_p} I_vI
-		\\
-			&=
-			- rS_p
-			\left(
-				1 - \frac{S_p^0}{S_p}
-			\right) ^ 2 +
-			\left[
-				\frac{\beta_p N_p}{\gamma N^\infty_v}
-				\beta_v
-				\frac{N_v^\infty}{N_p} - r
-			\right] I_p - 
-			rL_p - 
-			\frac{\beta_p N_p}{\gamma N ^ \infty_v}
-			\frac{\beta_v}{N_p} I_v I_p
-		\\
-			&=
-			-rS_p
-			\left(
-				1 - \frac{S_p^0}{S_p}
-			\right) ^ 2 + 
-			r
-			\left[
-				\frac{\beta_p \beta_v}{\gamma r} - 1 
-			\right] I_p - 
-			r L_p - 
-			\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p.
+		V_x f 
+			& \leq
+				- r S_p 
+				\left(
+					1 - 
+					\frac{N_p}{S_p}
+				\right) ^ 2 + 
+				\left[
+					\frac{\beta_p}{N^\infty_v} N_p - 
+					\frac{\beta_p N_p}{ N^\infty_v}
+				\right] I_v - 
+				r (L_p + I_p)
+			\\
+				& -
+				\gamma S_v
+				\left(
+					1 - 
+					\frac{N_v}{S_v}
+				\right) ^ 2 - 
+				\frac{\beta_v}{N_p} S_v I_p + 
+				\frac{\beta_v}{N_p} N_v I_p
+			\\
+				& +
+				\frac{\beta_p\beta_v S_v I_p}{\gamma N_v} + 
+				\beta_p \theta N_p \ .
 	\end{align*}
+	%
+	Moreover, since $S_v+I_v\leq N_v$, we can obtain the following relation
+	%
+	\begin{align*}
+		V_x f 
+			\leq &
+				- r S_p 
+				\left(
+					1 - 
+					\frac{N_p}{S_p}
+				\right) ^ 2 - 
+				r (L_p + I_p)
+			\\
+			&-
+				\gamma S_v
+				\left(1 - 
+					\frac{N_v}{S_v}
+				\right) ^ 2 + 
+				\frac{\beta_v}{N_p} I_v I_p
+			\\
+			&+
+				\frac{\beta_p\beta_v I_p}{\gamma} - 
+				\frac{\beta_p\beta_v I_v I_p}{\gamma N_v} + 
+				\beta_p \theta N_p \ .
+	\end{align*}
+%
 	Expressing the right hand side of above equation in term of the basic 
 	reproductive number, $\mathcal{R}^s_0$ we get
 	\begin{align*}
-		V_x f &=
-			-r S_p
-			\left(
-				1 - \frac{S_p^0}{S_p}
-			\right) ^ 2 + 
-			r
-			\left[
-				\mathcal{R} ^ s_0 - 1
-			\right]I_p - 
-			r L_p - 
-			\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p.
+		V_x f 
+			&\leq
+				-rS_p 
+				\left(
+					1 - 
+					\frac{S_p^0}{S_p}
+				\right) ^ 2 -
+				\gamma S_v
+				\left(
+					1 - 
+					\frac{N_v}{S_v}
+				\right) ^ 2 - 
+				r L_p - r
+				\left[
+					1 - \mathcal{R}^s_0
+				\right] I_p
+			\\
+			&-
+				\left[
+					\frac{\beta_p\beta_v}{\gamma N^\infty_v} - 
+					\frac{\beta_v}{N_p} 
+				\right] I_v I_p - 
+				\frac{\beta_v}{N_p} S_v I_p + 
+				\beta_p \theta N_p \ .
 	\end{align*}
-%
+	%
 	Moreover,
+	%
 	\begin{align*}
 		\frac{1}{2}
-		\trace(g^TV_{xx}g) 
-			&=
-				\frac{1}{2} 
-				\sigma^2 N_p 
-				\left(
-					\frac{N_p - S_p}{S_p}
-				\right) ^ 2
-			\\
-			&\leq
-				\frac{1}{2} 
-				\sigma^2 N_p.
+		\trace(g ^ TV_{xx} g) 
+		&=
+		\frac{1}{2} 
+		\frac{
+			\left(
+				 \sigma_L L_p + \sigma_I I_p
+			\right) ^ 2
+		}{N_p} 
+		+ 
+		\frac{1}{2} \sigma_v ^ 2 N_v,
 	\end{align*}
-	The stochastic terms are not necessary, because they do a martingale 
-	process and therefore, when we use integral and expectation they vanishing.
+	%
+	define $\sigma_p = \max\{\sigma_L,\sigma_I\}$, then
 	
-	Combining the above terms, we obtain
+		\begin{align*}
+		\frac{1}{2}
+		\trace(g ^ TV_{xx} g) 
+		&\leq
+		\frac{1}{2} 
+		\sigma_p ^ 2 N_p +  
+		\frac{1}{2} \sigma_v ^ 2 N_v \ .
+	\end{align*}
+	
+	The stochastic terms are not necessary, because they do a martingale process
+	and by the Strong law of large numbers, Theorem 3.4 
+	\cite[see][pp. 12]{Mao2008},when we use integral and expectation they
+	vanishing. Incorporation all terms calculate above, we obtain
 	\begin{align*}
-		dV(X) 
-			&=
+	 	\mathcal{L}V(X) 
+			&\leq
 				-r S_p
 				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 + 
-				r 
-				\left[
-					\mathcal{R} ^ s_0 - 1
-				\right] I_p - 
-				r L_p - 
-				\frac{\beta_p \beta_v}{\gamma N ^ \infty_v}I_v I_p + 
-				\frac{1}{2} \sigma^2 N_p
+					1 -\frac{S_p^0}{S_p}
+				\right) ^ 2 - 
+				\gamma S_v
 				\left(
-					\frac{N_p - S_p}{S_p}
-				\right)^2\\
-			&\leq
-				-rS_p\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 +
-				r 
+					1 - 
+					\frac{N_v}{S_v}
+				\right) ^ 2 - 
+				r L_p - r 
 				\left[
-					\mathcal{R}^s_0 - 1
-				\right] I_p - 
-				r L_p - 
-				\frac{\beta_p\beta_v}{\gamma N^\infty_v} I_v I_p + 
+					1 - \mathcal{R}^s_0
+				\right] I_p
+			\\
+			&-
+				\left[
+					\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} - 
+					\frac{\beta_v}{N_p}
+				\right] I_v I_p - 
+				\frac{\beta_v}{N_p} S_v I_p + 
+				\beta_p \theta N_p + 
 				\frac{1}{2} 
-				\sigma^2 N_p.
+				\sigma_p ^ 2 N_p + 
+				\frac{1}{2}
+				\sigma_v^2 N_v\ .
+			\\
 	\end{align*}
-	Define $\mathcal{L}V(X)$ as
+	%
+	Define 
+	$
+		\sigma_{p,v}:= 
+			\beta_p \theta N_p + 
+			\frac{1}{2} 
+			\sigma_p ^ 2 N_p +  
+			\frac{1}{2} \sigma_v ^ 2 N_v
+	$, then
 	\begin{align*}
 		\mathcal{L}V(X) 
-			&=
+			&\leq
 				-r S_p
 				\left(
-					1 - \frac{S_p^0}{S_p}
-				\right) ^ 2 + 
-				r 
+					1 - 
+					\frac{S_p^0}{S_p}
+				\right) ^ 2 - 
+				\gamma S_v
+				\left( 1 -
+					\frac{N_v}{S_v}
+				\right) ^ 2 - r L_p - r 
 				\left[
-					\mathcal{R} ^ s_0 - 1
-				\right] I_p - 
-				r L_p - 
-				\frac{\beta_p\beta_v}{\gamma N ^ \infty_v} I_v I_p + 
-				\frac{1}{2} 
-				\sigma ^ 2 
-				N_p.
+					1 - \mathcal{R}^s_0
+				\right] I_p
+			\\
+			&-
+				\left[
+					\frac{\beta_p\beta_v}{\gamma N^\infty_v} - 
+					\frac{\beta_v}{N_p}
+				\right] I_v I_p - 
+				\frac{\beta_v}{N_p} S_v I_p + 
+				\sigma_{p,v} \ .
 	\end{align*}
-	Using It\^{o}'s formula and integrating $dV$ from 
-	$0$ to $t$ as well as taking expectation yield the following
+	%
+	Since $V(x)\geq 0$, using the integral form of It\^{o}'s formula and 
+	taking expectation yields
 	\begin{align*}
 		0 
-			&\leq
-				\mathbb{E}V(t) - 
-				\mathbb{E}V(0) \leq 
-				\mathbb{E}
-				\int_{0} ^ {t} LV(X(s)) ds 
+		&\leq
+			\mathbb{E}V(t) - 
+			\mathbb{E} V(0)
+			\leq
+			\mathbb{E}
+			\int_{0} ^ {t}
+				\mathcal{L} V(X(s)) ds
 			\\
-			&\leq
-				-\mathbb{E}
-					\int_{0} ^ {t}
-						\left[
-							r S_p 
-							\left(
-								1 - \frac{S_p^0}{S_p}
-							\right) ^ 2 - 
-							r 
-							\left[
-								\mathcal{R}^s_0 - 1
-							\right] I_p + r L_p + 
-							\frac{\beta_p\beta_v}{\gamma N^\infty_v} I_v I_p
-						\right]ds + 
-				 \frac{1}{2}\sigma^2 N_p
-	\end{align*}
-	
-	Therefore,
-	\begin{align*}
-		\lim\limits_{t\to \infty}
-		\frac{1}{t}
-		\mathbb{E}
+		&\leq
+			-\mathbb{E}
 			\int_{0} ^ {t}
 			\left[
-				-r S_p
+				rS_p 
 				\left(
-					1 - \frac{S_p ^ 0}{S_p}
-				\right) ^ 2 +
-				r
+					1 - \frac{S_p^0}{S_p}
+				\right)^2 + 
+				\gamma S_v
+				\left(1 - 
+					\frac{N_v}{S_v}
+				\right) ^ 2 + 
+				r L_p + 
+				r 
 				\left[
-					\mathcal{R}^s_0 - 1
-				\right] I_p - 
-				r L_p - 
-				\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} I_v I_p
-			\right]ds\leq \frac{1}{2}\sigma^2 N_p.
+					1 - \mathcal{R} ^ s _ 0
+				\right] I_p 
+			\right.
+		\\
+		&+
+			\left.
+				\left[
+					\frac{\beta_p\beta_v}{\gamma N^\infty_v} + 
+					\frac{\beta_v}{N_p}
+				\right] I_v I_p + 
+				\frac{\beta_v}{N_p} S_v I_p - 
+				\sigma_{p,v}
+			\right] ds \ .
 	\end{align*}
-		
+%
+	Therefore,
+%	
+	\begin{align*}
+		\frac{1}{t}
+		\mathbb{E}
+			&\int_{0}^{t}
+				\left[
+					rS_p 
+					\left(
+						1 - \frac{S_p^0}{S_p}
+					\right) ^ 2 +
+					\gamma S_v
+					\left(
+						1 - \frac{N_v}{S_v}
+					\right) ^ 2 + 
+					r L_p + 
+					r 
+					\left[
+						1 - \mathcal{R} ^ s_ 0
+					\right]I_p 
+				\right.
+			\\
+			&+
+				\left.
+					\left[
+						\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} + 
+						\frac{\beta_v}{N_p}
+					\right] I_v I_p + 
+					\frac{\beta_v}{N_p}S_vI_p
+				\right] ds 
+				\leq
+				\sigma_{p,v} \ .
+	\end{align*}
+	This implies that,
+	\begin{align*}
+		\lim\limits_{t\to \infty}
+		\frac{1}{t} \mathbb{E}
+			&
+			\int_{0}^{t}
+			\left[
+				r S_p
+				\left(
+					1 - 
+					\frac{S_p^0}{S_p}
+				\right) ^ 2 + 
+				\gamma S_v
+				\left(
+					1 - \frac{N_v}{S_v}
+				\right) ^ 2 + 
+				r L_p + 
+				r 
+				\left[
+					1 - \mathcal{R} ^ s _ 0
+				\right] I_p 
+			\right.
+		\\
+		&+
+		\left.
+			\left[
+				\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} + 
+				\frac{\beta_v}{N_p}
+			\right] I_v I_p + 
+			\frac{\beta_v}{N_p}S_v I_p
+		\right] ds 
+		\leq 
+		\sigma_{p,v}.
+	\end{align*}
+	%
+	Taking 
+	$\theta$, $\sigma_p$, and $\sigma_v$ such that $0<\sigma_{p,v}< 1$, we 
+	have
+	\begin{multline*}
+		\lim%
+		\limits_{t\to \infty}
+		\frac{1}{t}
+		\log
+		\mathbb{E}
+		\int_{0} ^ {t}
+			%
+			\left[
+				r S_p
+				\left(
+					1-
+					\frac{S_p ^ 0}{S_p}
+				\right) ^ 2 +
+			\right.
+			%
+			\gamma S_v
+			\left(
+				1 - 
+				\frac{N_v }{ S_v}
+			\right) ^ 2 + 
+			%& 
+			r L_p + r
+			\left[
+				1 - \mathcal{R}^s_0
+			\right] I_p 
+		\\
+			 +
+			%	
+			\left(
+				\frac{\beta_p\beta_v}{\gamma N^\infty_v} + 
+				\frac{\beta_v}{N_p}
+			\right) I_v I_p + 
+		 %\\	
+			%& 
+			\left.
+				\frac{\beta_v}{N_p} S_v I_p
+			\right] 
+			ds \leq 
+			\log 
+				\sigma_{p,v} <0 \ .
+	\end{multline*}
+	Therefore,
+	\begin{multline*}
+		\lim
+		\limits_{t\to\infty}
+		\mathbb{E}
+			\int_{0} ^ {t}
+		 		\left[ 
+		 			r S_p
+		 			\left(
+		 				1 - 
+		 				\frac{S_p^0}{S_p}
+		 			\right)^ 2 +
+		 		\right.
+		 		\gamma S_v
+		 		\left(
+		 			1 - 
+		 			\frac{N_v}{S_v}
+		 		\right) ^ 2 + 	
+				r L_p 
+		 			+ 
+		 			r
+		 			\left[
+		 				1 - \mathcal{R}^s_0
+		 			\right] I_p 
+				+
+				\\
+				\left.
+					\left[
+						\frac{\beta_p \beta_v}{\gamma N ^ \infty_v} + 
+						\frac{\beta_v}{N_p}
+					\right] I_v I_p + 
+					\frac{\beta_v}{N_p} S_v I_p
+				\right] 
+				ds 
+				\leq
+				\lim
+				\limits_{t\to \infty}
+					e^{\sigma_{p,v} t } = 0 \ .
+	\end{multline*}
+%		\improvement{rewrite}
+Letting $t \to \infty$ we obtain
+	\begin{align*}
+		\lim\limits_{t \to\infty}
+			(S_p, L_p, I_p, S_v, I_v )^{\top}_{t}
+			=
+			(N_p, 0, 0, N_v, 0)
+	\end{align*}
+		exponentially a.s. \qed
 \end{proof}
 \begin{remark}
-	Theorem \ref{theorem_2} shows that, if the basic stochastic reproductive 
-	number $\mathcal{R}^s_0$ is less than one, we have the solutions 
-	$X(t)=(S_p (t), L_p (t), (t ) I_p (t), S_v (t), I_v (t))^{\top}$ 
-	tend to the equilibrium point 
-	$(N_p, 0,0, N_v^{\infty}, 0)^{\top}$, 
+	Theorem \ref{thm::Rs0Extinction} shows that, if the basic stochastic
+	reproductive number $\mathcal{R}^s_0$ is less than one, we have the 
+	solutions $X(t)=(S_p (t), L_p (t), (t ) I_p (t), S_v (t), I_v (t))^{\top}$ 
+	tend to the equilibrium point $(N_p, 0,0, N_v^{\infty}, 0)^{\top}$, 
 	when $t\rightarrow \infty$.
 \end{remark}
